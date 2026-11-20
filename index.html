@@ -94,8 +94,14 @@ nav.toc a:hover{background:var(--faint)}
 
 /* recipe */
 .recipe{background:var(--card);border:1px solid var(--line);border-radius:6px;margin-top:24px;overflow:hidden}
-.rhead{padding:22px 24px;border-bottom:1px solid var(--line);display:grid;gap:12px}
-.rtop{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start}
+.rhead{padding:0 24px 22px;border-bottom:1px solid var(--line);display:grid;gap:12px}
+.rtop{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;padding:20px 24px;cursor:pointer;user-select:none}
+.rtop:hover{background:var(--faint)}
+.rtop:focus-visible{outline:2px solid var(--key);outline-offset:-3px}
+.rtl{display:flex;align-items:center;gap:13px;min-width:0}
+.rtop .cxi{flex:none;width:19px;height:19px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;line-height:1;transition:transform .14s ease,color .14s ease}
+.rtop:hover .cxi{color:var(--ink)}
+.rtop[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
 .rtop .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
 .rhead p.purpose{max-width:64ch;color:var(--muted)}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;padding-top:4px}
@@ -185,12 +191,8 @@ h2.cxh:focus-visible{outline:2px solid var(--key);outline-offset:4px}
 h2.cxh .cxi{flex:none;width:19px;height:19px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;line-height:1;transition:transform .14s ease,color .14s ease,border-color .14s ease}
 h2.cxh:hover .cxi{color:var(--ink);border-color:var(--muted)}
 h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
-.cxb{display:block;width:100%;text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--faint);border:none;border-top:1px solid var(--line);color:var(--muted);padding:11px 24px;cursor:pointer}
-.cxb:hover{color:var(--ink);background:var(--card)}
-.cxb::before{content:"\25B8";display:inline-block;margin-right:9px;transition:transform .14s ease}
-.cxb[aria-expanded="true"]::before{transform:rotate(90deg)}
 .sticky .ctl.alt{margin-left:0}
-@media print{.cxoff{display:block !important}.cxb{display:none}[hidden]{display:block !important}}
+@media print{.cxoff{display:block !important}[hidden]{display:block !important}}
 
 /* in the room */
 .rfilt{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
@@ -520,9 +522,9 @@ h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
     </tbody>
   </table></div>
   <div class="note" style="margin-top:14px"><b>Number 1 is the session you already run, and it’s first for a reason.</b> You use journeys to find the problems and then frame the challenges, so the chain starts where you start. The Journey Map step is your existing recipe; what follows it is the extension — three lanes under the map, unowned handoffs marked, every gap leaving with a name against it. The How Might We move you normally close with didn’t get cut, it got its own session as number 2, where it has an agreed problem statement feeding it instead of a wall of raw observations.<br><br>Which means you can skip the front of number 2 when you’ve come straight from number 1 — the research readout and Affinity Mapping steps are there for a cold start, and you won’t have one. Start at the Problem Statement.</div>
-</section>
 
 <div id="recipebody"></div>
+</section>
 
 <section id="types">
   <h2>Session types</h2>
@@ -1235,11 +1237,11 @@ function recipeHTML(r){
       ${s.ho?`<div class="handoff"><span class="arr">↳</span><span><b>Hands the next step:</b> ${esc(s.ho)}</span></div>`:""}
     </div></div>`}).join("");
   return `<section class="recipe" id="${r.id}">
+    <div class="rtop">
+      <div class="rtl"><span class="cxi" aria-hidden="true">▾</span><div><div class="eyebrow">Run-of-show ${r.n}</div><h2>${esc(r.title)}</h2></div></div>
+      <div class="meta">${esc(r.time)} · ${esc(r.people)} people<br>${r.phases.map(p=>`<span class="ph ${p}">${PH[p]}</span>`).join(" ")}</div>
+    </div>
     <div class="rhead">
-      <div class="rtop">
-        <div><div class="eyebrow">Run-of-show ${r.n}</div><h2>${esc(r.title)}</h2></div>
-        <div class="meta">${esc(r.time)} · ${esc(r.people)} people<br>${r.phases.map(p=>`<span class="ph ${p}">${PH[p]}</span>`).join(" ")}</div>
-      </div>
       <p class="purpose">${esc(r.purpose)}</p>
       <div class="facts">${facts}</div>
     </div>
@@ -1558,6 +1560,7 @@ const ROOM=[
       if(labels)btn.textContent=open?labels[1]:labels[0];
       if(persist){state[id]=open?1:0;save()}
     };
+    box.__fold=f;
     box.addEventListener("beforematch",function(){f.set(true,false)});
     folds[id]=f;all.push(f);
     f.set((id in state)?!!state[id]:defOpen,false);
@@ -1566,15 +1569,16 @@ const ROOM=[
   document.querySelectorAll("section[id]").forEach(function(sec){
     var rec=sec.classList.contains("recipe");
     if(rec){
-      var head=sec.querySelector(".rhead");
-      if(!head)return;
-      var kids=[],n=head.nextElementSibling;
+      var top=sec.querySelector(".rtop");
+      if(!top)return;
+      var kids=[],n=top.nextElementSibling;
       while(n){kids.push(n);n=n.nextElementSibling}
-      var steps=sec.querySelectorAll(".step").length;
-      var b=document.createElement("button");
-      b.type="button";b.className="cxb";
-      head.parentNode.insertBefore(b,head.nextSibling);
-      fold(sec.id,kids,b,["Show the run-of-show \u00b7 "+steps+" steps","Hide the steps"],false);
+      top.setAttribute("role","button");
+      top.setAttribute("tabindex","0");
+      fold(sec.id,kids,top,null,false);
+      top.addEventListener("keydown",function(e){
+        if(e.key===" "||e.key==="Enter"){e.preventDefault();top.click()}
+      });
     }else{
       var h=sec.querySelector("h2");
       if(!h)return;
@@ -1601,7 +1605,19 @@ const ROOM=[
   });
 
   // A link into a folded section has to open it, or the jump lands on nothing.
-  function reveal(id){var f=folds[id];if(f&&!f.open)f.set(true,true)}
+  function reveal(id){
+    var sec=document.getElementById(id);
+    if(sec){
+      var n=sec.parentElement;
+      while(n){
+        var box=n.closest?n.closest(".cx"):null;
+        if(!box)break;
+        if(box.__fold&&!box.__fold.open)box.__fold.set(true,true);
+        n=box.parentElement;
+      }
+    }
+    var f=folds[id];if(f&&!f.open)f.set(true,true);
+  }
   document.addEventListener("click",function(e){
     var a=e.target.closest('a[href^="#"]');
     if(a&&a.hash&&a.hash.length>1)reveal(decodeURIComponent(a.hash.slice(1)));
