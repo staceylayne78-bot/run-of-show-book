@@ -2,7 +2,7 @@
 
 Ten workshops written out minute by minute, plus the method for assembling your own.
 
-**Read it:** [staceylayne78.github.io/run-of-show-book](https://staceylayne78.github.io/run-of-show-book/)
+**Read it:** [staceylayne78-bot.github.io/run-of-show-book](https://staceylayne78-bot.github.io/run-of-show-book/)
 
 ---
 
@@ -68,4 +68,4 @@ they did the hard part.
 
 ---
 
-By [Stacey Layne Martin](https://github.com/staceylayne78), service designer.
+By [Stacey Layne Martin](https://github.com/staceylayne78-bot), service designer.
