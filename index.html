@@ -191,6 +191,20 @@ h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
 .cxb[aria-expanded="true"]::before{transform:rotate(90deg)}
 .sticky .ctl.alt{margin-left:0}
 @media print{.cxoff{display:block !important}.cxb{display:none}[hidden]{display:block !important}}
+
+/* in the room */
+.rfilt{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.rfilt button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:3px;padding:6px 11px;cursor:pointer}
+.rfilt button:hover{border-color:var(--muted);color:var(--ink)}
+.rfilt button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#roombody td{vertical-align:top}
+#roombody .sig{font-weight:600;font-size:14.5px}
+#roombody .dx{color:var(--muted)}
+#roombody .mv{font-size:14px}
+#roombody .wh a{font-family:var(--mono);font-size:11.5px;color:var(--key);text-decoration:none;border-bottom:1px solid transparent}
+#roombody .wh a:hover{border-bottom-color:var(--key)}
+#roombody .wh span{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.rcount{font-family:var(--mono);font-size:11px;color:var(--muted);margin:0 0 14px}
 </style>
 
 <div class="wrap" id="top">
@@ -208,7 +222,7 @@ h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
     <div class="phasetab pt-test"><div class="n">05</div><b>test</b><p>Put it in front of someone who doesn’t already believe in it.</p></div>
   </div>
   <nav class="toc">
-    <a href="#gap">What this adds</a><a href="#gaps">Common gaps</a><a href="#ready">Training plan</a><a href="#gate">Readiness</a><a href="#expect">Expectations</a><a href="#rank">Rank in the room</a><a href="#spine">What goes on the wall</a><a href="#handoff">When it doesn’t flow</a><a href="#r4">1 · Blueprint the Service</a><a href="#r1">2 · Frame the Challenge</a><a href="#r2">3 · Ideas to Concepts</a><a href="#r3">4 · Sequence the Work</a><a href="#r5">5 · Strategy Signal</a><a href="#r6">6 · One Owner</a><a href="#r7">7 · Lightning Decision Jam</a><a href="#r8">8 · What We Need to Know</a><a href="#r9">9 · Requirements</a><a href="#r10">10 · What Will Kill This</a><a href="#types">Session types</a><a href="#tools">Tool index</a><a href="#compose">Build your own</a><a href="#teach">Teach it</a><a href="#sources">Sources</a>
+    <a href="#gap">What this adds</a><a href="#gaps">Common gaps</a><a href="#ready">Training plan</a><a href="#gate">Readiness</a><a href="#expect">Expectations</a><a href="#rank">Rank in the room</a><a href="#spine">What goes on the wall</a><a href="#handoff">When it doesn’t flow</a><a href="#room">In the room</a><a href="#r4">1 · Blueprint the Service</a><a href="#r1">2 · Frame the Challenge</a><a href="#r2">3 · Ideas to Concepts</a><a href="#r3">4 · Sequence the Work</a><a href="#r5">5 · Strategy Signal</a><a href="#r6">6 · One Owner</a><a href="#r7">7 · Lightning Decision Jam</a><a href="#r8">8 · What We Need to Know</a><a href="#r9">9 · Requirements</a><a href="#r10">10 · What Will Kill This</a><a href="#types">Session types</a><a href="#tools">Tool index</a><a href="#compose">Build your own</a><a href="#teach">Teach it</a><a href="#sources">Sources</a>
   </nav>
 </header>
 
@@ -475,6 +489,18 @@ h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
   <div class="note" style="margin-top:16px"><b>Audit one you've already run, not the next one.</b> Take a session that didn't flow, write the agenda down the page, and put the two questions against every join. The broken handoff is almost always visible in the agenda alone &mdash; which means it was findable before the room arrived, with twenty minutes and this page.</div>
 </section>
 
+<section id="room">
+  <h2>In the room</h2>
+  <p class="sec-intro">Everything above this point assumes the session goes roughly to plan. Every <i>Say:</i> line in the ten run-of-shows belongs to a moment you scheduled. This is the other list — the moments you didn't, indexed by what you are actually looking at when it happens. Most of the answers are already elsewhere in this book; what was missing was any way to find them by symptom rather than by phase. Where the honest answer is that this book has nothing, the row says so.</p>
+  <div class="rfilt" id="rfilt"></div>
+  <p class="rcount" id="rcount"></p>
+  <div class="tablebox"><table>
+    <thead><tr><th>What you're seeing</th><th>What it usually is</th><th>What to do now</th><th>In this book</th></tr></thead>
+    <tbody id="roombody"></tbody>
+  </table></div>
+  <div class="note" style="margin-top:18px"><b>Where the list comes from.</b> The six categories and the trigger set are Workshopr's, from their <a href="https://www.workshopr.io/">Workshop Intervention Cards</a> — thirty-four printable cards covering difficult participants, energy, time, group dynamics, technical failures and the moments in between. Theirs carry a scripted line for each. The readings and the moves in this table are mine, pointed back at the rest of this book rather than lifted, because a response you can't connect to the rest of your method is a line you'll forget under pressure. Go to the cards for the taxonomy and the printable deck; this table is how those triggers land in <i>these</i> sessions.</div>
+</section>
+
 <section id="recipes">
   <h2>The run-of-shows</h2>
   <p class="sec-intro">Each is a complete session. The first four chain in the order you already work: Blueprint the Service surfaces the problems, Frame the Challenge turns them into a Problem Statement and a How Might We, Ideas to Concepts answers it, Sequence the Work orders what survives. Strategy Signal sits above all four and sets the direction they serve — run it when nobody can say where you're going in two years. One Owner is the odd one out, built for a room of one or two people who have never done this. Seven through ten are the ones you reach for when the chain is not what you need: a stuck team or a retro, an ideation that ended without enough information, a concept that has to become requirements, and the forty-five minutes that finds out how it fails.</p>
@@ -633,7 +659,7 @@ h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
     <div class="card"><h3>This Is Service Design Doing</h3><p>Fuller instructions for Journey Map and Service Blueprint than the toolkit has room for, plus co-creation with customers and the facilitation theory underneath all of this — consent, status, neutrality, safe space.</p><p style="margin-top:7px">54 free method pages at <a href="https://www.thisisservicedesigndoing.com/methods">thisisservicedesigndoing.com/methods</a>; chapter 10 of the book for facilitation.</p></div>
     <div class="card"><h3>Gary Klein — the pre-mortem</h3><p>Run-of-show 10 is his, from <i>Performing a Project Premortem</i> in Harvard Business Review, September 2007 — two pages, and the whole method is in them. The past tense is the finding, not a flourish: the prospective-hindsight research he cites found that people asked to explain an outcome that has already happened produce substantially more reasons than people asked to predict one.</p><p style="margin-top:7px">Read it before you run it. It is short enough that handing it to a sponsor is a reasonable thing to do.</p></div>
     <div class="card"><h3>Liberating Structures</h3><p>TRIZ, the destructive variant on run-of-show 10 — design the disaster on purpose, then find what you are already doing that resembles it. Also worth knowing for 1-2-4-All and 25/10 Crowd Sourcing, which are the cheapest ways to make a large room produce something.</p><p style="margin-top:7px">All 33 structures free at <a href="https://www.liberatingstructures.com/">liberatingstructures.com</a>.</p></div>
-    <div class="card"><h3>Workshopr.io</h3><p>The commitment round, and 12 more scripted sessions in this same shape if you want more reps — free, no sign-in, at <a href="https://www.workshopr.io/library/recipes/">workshopr.io/library/recipes</a>.</p></div>
+    <div class="card"><h3>Workshopr.io</h3><p>The commitment round, and 12 more scripted sessions in this same shape if you want more reps — free, no sign-in, at <a href="https://www.workshopr.io/library/recipes/">workshopr.io/library/recipes</a>.</p><p style="margin-top:7px">Their Workshop Intervention Cards are the source of the trigger taxonomy behind <a href="#room">In the room</a> — thirty-four cards across six categories, with a scripted response on each.</p></div>
   </div>
   <div class="warn" style="margin-top:18px"><b>If you’re building an accreditation portfolio.</b> Run-of-show 1, Blueprint the Service, is the one that maps to the Service Design Network competency on planning and facilitating co-creation sessions with appropriate visualization tools. Run it with real customers or frontline staff in the room, not just the project team, if you want it to count as evidence.</div>
 </section>
@@ -1243,6 +1269,175 @@ document.getElementById("recipebody").innerHTML=RECIPES.map(recipeHTML).join("")
 })();
 
 </script>
+<script>const RCAT=[["all","Everything"],["part","Participants"],["energy","Energy"],["time","Time"],["group","Group dynamics"],["tech","Technical"],["mom","Moments"]];
+const ROOM=[
+{c:"part",t:"One person is talking over everyone",
+ r:"Usually rank, not personality. If they outrank most of the room, this is not a participation problem and no amount of inviting others in will fix it.",
+ d:"Go to a silent written round immediately. It takes the floor back without naming anyone. If they are senior, the Decider rules apply: they speak last, they don't heat-map, they don't do the exercises.",
+ k:"rank",kl:"Rank in the room"},
+{c:"part",t:"Someone hasn't said anything",
+ r:"Often the best-informed person in the room rather than the least. Saying “we tried that in 2023 and here's what killed it” takes four minutes; silent writing gives ninety seconds and a sticky note.",
+ d:"Don't call on them cold. Give them a role instead of a turn — the “that's been tried” caller, with standing permission to interrupt. Pairs before plenary also works: it is easier to say a thing twice than once.",
+ k:"gate",kl:"Readiness · the drain"},
+{c:"part",t:"Every idea hits “that won't work”",
+ r:"Sometimes the room's mood. More often it is real prior art that nobody wrote down, arriving late and sideways.",
+ d:"Put up an <i>already explored</i> sheet and write each objection on it as a fact rather than a blocker. You have just converted an interruption into the brief you should have had. If it keeps coming, switch to voting on problems rather than solutions.",
+ k:"gate",kl:"Readiness · the drain"},
+{c:"part",t:"Private conversations pulling focus",
+ r:"Normally a signal that the current activity has no job for them, or has run past its useful length.",
+ d:"Cut the activity, not the conversation. The twenty-second rule gives you a script, so you are enforcing a rule rather than being rude.",
+ k:"tools",kl:"Tool index · teaching notes"},
+{c:"part",t:"Devices winning",
+ r:"Contagious, and almost always a symptom of a stretch where nothing is being produced.",
+ d:"Move to something with an output inside five minutes. Phones go down when hands are busy. The prevention is in the frame — tell people why them specifically, and what happens to what they say.",
+ k:"expect",kl:"Expectations"},
+{c:"part",t:"Experience used to shut things down",
+ r:"Two different problems wearing the same face: genuine prior art, or rank. Ask for specifics and they separate immediately.",
+ d:"Ask for the mechanism, not the verdict — “what killed it?” Write the answer up. If they can't name what killed it, it was rank, and the Decider rules apply.",
+ k:"rank",kl:"Rank in the room"},
+{c:"part",t:"Someone joins late",
+ r:"A recap punishes everyone who was on time and spends the momentum you just built.",
+ d:"Nod, keep going, hand them the one artifact they need for the step in progress. Catch them up at the break. Chronic lateness is a sponsor conversation, not a room one.",
+ k:null,kl:"Not covered — and it doesn't need to be"},
+{c:"part",t:"Long answers going nowhere",
+ r:"Nearly always an unclear instruction. People talk long when they don't know what shape the answer is meant to be.",
+ d:"Interrupt with the format rather than the content: “give me the headline.” Then fix the instruction — What · Why · How, said three times, with the output named.",
+ k:"ready",kl:"Training plan · module 0"},
+{c:"energy",t:"The room has gone flat",
+ r:"Energy is a function of whether people are making something. It dips when they are listening.",
+ d:"Move to production. Any silent-writing step restores it inside two minutes. If it doesn't, take the break early — a break you call is cheaper than the one the room takes without telling you.",
+ k:"compose",kl:"Build your own · fixed furniture"},
+{c:"energy",t:"A remote session is dragging",
+ r:"Remote rooms need shorter blocks, not better content.",
+ d:"Break into pairs; cameras optional for ten minutes. Everything this book says about silent writing works <i>better</i> remotely than in person, so use more of it, not less.",
+ k:"ready",kl:"Training plan · module 0"},
+{c:"energy",t:"Straight after lunch",
+ r:"Entirely predictable, which means it is a planning decision rather than an in-room one.",
+ d:"Never put a presentation or a read here. This slot is where the most physical thing on your agenda belongs — a wall, markers, people standing up.",
+ k:"compose",kl:"Build your own"},
+{c:"energy",t:"Late in the day",
+ r:"Decision quality falls before visible energy does, which is why this one is dangerous rather than merely tiring.",
+ d:"Move the commit step earlier than feels necessary. If you are making the day's biggest choice at four o'clock, you are about to ratify whatever the most senior person in the room thinks.",
+ k:"rank",kl:"Rank in the room"},
+{c:"energy",t:"A dip in the middle of a session",
+ r:"Usually the gap between two activities rather than either activity.",
+ d:"Check the handoff: did the last step produce what this step asks people to pick up? A room handed the wrong material goes quiet well before it complains.",
+ k:"handoff",kl:"When a session doesn't flow"},
+{c:"time",t:"An activity is running over",
+ r:"Almost always convergence nobody budgeted for. The room is being asked to generate and to choose at the same time, and does neither.",
+ d:"Stop and vote. A heat map is five minutes and turns forty notes into three things. Then carry on.",
+ k:"handoff",kl:"The seven ways it breaks"},
+{c:"time",t:"There is more content than time",
+ r:"You have just found out in the room what the draft agenda should have told you.",
+ d:"Cut a tool. Never cut the commit step — a session that discovers and ideates but never commits feels excellent and produces nothing.",
+ k:"compose",kl:"Build your own"},
+{c:"time",t:"You've finished early",
+ r:"Rare, and it usually means a step converged faster than expected rather than that you have spare time.",
+ d:"Spend it making the output more usable rather than adding an activity. Owners, dates, and a photo of the wall with names on it.",
+ k:"compose",kl:"Build your own"},
+{c:"time",t:"You're rushing to cover everything",
+ r:"This is the pressure that produces sessions people afterwards describe as “great session, nothing happened”.",
+ d:"Say out loud what you are dropping and why. A named cut reads as facilitation; a silent one reads as running out of time.",
+ k:"expect",kl:"Expectations"},
+{c:"time",t:"It's going to plan",
+ r:"Worth naming, because the instinct here is to add something.",
+ d:"Don't. The version you run should look slightly too short on paper. It won't be.",
+ k:"compose",kl:"Build your own"},
+{c:"group",t:"Tension between two people",
+ r:"Normally a decision that was never actually made, being re-litigated in public.",
+ d:"Name the Decider out loud and ask them to decide now rather than at the end. Unresolved authority is what turns disagreement into friction.",
+ k:"gate",kl:"Readiness · gate 2"},
+{c:"group",t:"Everyone is agreeing too easily",
+ r:"Two causes that look identical from the front of the room: a senior person present, or a group artifact built too early.",
+ d:"Go individual and silent. Once a room has built one thing together it will defend it rather than diverge from it. If it is rank, concepts go up unsigned.",
+ k:"rank",kl:"Rank in the room"},
+{c:"group",t:"The discussion keeps wandering",
+ r:"Often the room telling you the frame is wrong, rather than that they lack discipline.",
+ d:"Park it visibly — then ask yourself whether the thing in the parking lot is bigger than the agenda. Sometimes the drift is the session.",
+ k:"ready",kl:"Training plan · module 0"},
+{c:"group",t:"The same few voices, every round",
+ r:"If it is one person, see the first row. If it is structural, it is the format rather than the people.",
+ d:"Make every generating step individual and silent before anything is said aloud, then read out round-robin, one note at a time, same or new.",
+ k:"gap",kl:"The four habits"},
+{c:"group",t:"The scope is expanding",
+ r:"The sponsor contract never said what the session would <i>not</i> do, so there is nothing for it to expand against.",
+ d:"Say the out-of-scope line you should have opened with. If you never wrote one, write it now, out loud, and get the Decider to agree to it in front of everyone.",
+ k:"expect",kl:"Expectations"},
+{c:"group",t:"The group can't commit to a decision",
+ r:"A room cannot choose between things it has no way to compare.",
+ d:"Stop discussing and start placing. Two axes, “higher or lower” only, twenty seconds each. If they still can't choose, the Decider decides — that is the entire job.",
+ k:"tools",kl:"Tool index"},
+{c:"tech",t:"The tool isn't working",
+ r:"Not a facilitation problem, and this book has nothing on it.",
+ d:"The only real mitigation is an analog fallback you have actually rehearsed: paper, markers, a wall. Decide in prep which activities survive without the tool, and you will never need this row again.",
+ k:null,kl:"Gap — prep, not facilitation"},
+{c:"tech",t:"Nobody can hear the remote participants",
+ r:"Debugging live costs you the room's attention as well as the audio.",
+ d:"Switch the step you are in to written input and fix it at the break. A silent written round is the most technology-resilient thing in this book.",
+ k:null,kl:"Gap — prep, not facilitation"},
+{c:"tech",t:"Screen share has failed",
+ r:"The shared artifact matters; the mechanism showing it does not.",
+ d:"Describe what is on it and keep going. If the spine is a real shared artifact, somebody else in the room can put it up.",
+ k:"spine",kl:"What goes on the wall"},
+{c:"tech",t:"You've lost connection",
+ r:"The session does not need you for the next five minutes if the Decider knows that in advance.",
+ d:"Agree in prep that the Decider runs the clock while you reconnect. If it is a participant who dropped, carry on and catch them up at the break.",
+ k:null,kl:"Gap — prep, not facilitation"},
+{c:"mom",t:"Blank stares, nobody answering",
+ r:"The instruction, nine times out of ten. Rooms rarely refuse a question; they fail to parse it.",
+ d:"Don't repeat it louder. Rephrase it as a written task with a number attached: “three each, two minutes, one per note.” Silence that follows a clear instruction is work, not resistance.",
+ k:"ready",kl:"Training plan · module 0"},
+{c:"mom",t:"Too many questions at once",
+ r:"Means the frame arrived after the activity instead of before it.",
+ d:"Take them all, write them up, and answer only the ones that block the next ten minutes. Say that is what you are doing, so the rest don't read as ignored.",
+ k:"ready",kl:"Training plan · module 0"},
+{c:"mom",t:"You're losing the room",
+ r:"Check the handoff before you check the people.",
+ d:"Ask what the last step actually produced and whether this one can use it. If it can't, stop and build the missing artifact — that <i>is</i> the session now.",
+ k:"handoff",kl:"When a session doesn't flow"},
+{c:"mom",t:"The room has just said something true",
+ r:"The moment most often lost, because nobody writes down a good thing while it is happening.",
+ d:"Stop. Put it on the wall in the room's own words, with the name of whoever said it. Then ask who owns it and by when, before the energy moves somewhere else.",
+ k:"compose",kl:"Build your own · end with owners"},
+{c:"mom",t:"A discussion needs to end",
+ r:"Discussions don't end on their own. They end when something replaces them.",
+ d:"Replace it with a vote or a placement, not with “let's move on”. This is what the twenty-second rule is for, and it is the hardest thing to teach a new facilitator.",
+ k:"tools",kl:"Tool index"},
+{c:"mom",t:"Someone becomes upset",
+ r:"Usually a sign the session has touched something real — often that the problem implicates somebody sitting in the room.",
+ d:"Break. Not a debrief in front of everyone. Speak to them privately and decide together whether to continue. Collecting the problems anonymously beforehand is what prevents most of these.",
+ k:"rank",kl:"Rank in the room"}
+];
+
+(function(){
+  var body=document.getElementById("roombody"),filt=document.getElementById("rfilt"),cnt=document.getElementById("rcount");
+  if(!body)return;
+  var cur="all";
+  var E=function(s){return String(s).replace(/&(?!#?\w+;)/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")};
+  // the readings carry deliberate <i> emphasis, so they are inserted as written
+  function render(){
+    var rows=ROOM.filter(function(x){return cur==="all"||x.c===cur});
+    body.innerHTML=rows.map(function(x){
+      var where=x.k?'<a href="#'+x.k+'">'+x.kl+'</a>':'<span>'+x.kl+'</span>';
+      return '<tr><td class="sig">'+x.t+'</td><td class="dx">'+x.r+'</td><td class="mv">'+x.d+'</td><td class="wh">'+where+'</td></tr>';
+    }).join("");
+    var gaps=rows.filter(function(x){return !x.k}).length;
+    cnt.textContent=rows.length+(rows.length===1?" trigger":" triggers")+(gaps?"  \u00b7  "+gaps+" with no answer in this book":"");
+  }
+  filt.innerHTML=RCAT.map(function(c){
+    var n=c[0]==="all"?ROOM.length:ROOM.filter(function(x){return x.c===c[0]}).length;
+    return '<button type="button" data-c="'+c[0]+'" aria-pressed="'+(c[0]==="all")+'">'+E(c[1])+' '+n+'</button>';
+  }).join("");
+  filt.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-c]");
+    if(!b)return;
+    cur=b.dataset.c;
+    filt.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+    render();
+  });
+  render();
+})();
+</script>
 <script>
 /* ---------- sticky contents bar ----------
    One long document beats several short ones here: Cmd+F reaches every word
@@ -1250,7 +1445,7 @@ document.getElementById("recipebody").innerHTML=RECIPES.map(recipeHTML).join("")
    a way to move around it without going back to the top, which is this. */
 (function(){
   var GROUPS=[
-    ["Before you run",["gap","gaps","ready","reps","gate","expect","rank","spine","handoff"]],
+    ["Before you run",["gap","gaps","ready","reps","gate","expect","rank","spine","handoff","room"]],
     ["The run-of-shows",["recipes","r4","r1","r2","r3","r5","r6","r7","r8","r9","r10"]],
     ["Reference",["types","tools","compose","teach","sources"]]
   ];
