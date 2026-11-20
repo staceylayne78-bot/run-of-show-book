@@ -52,7 +52,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--key);outline-offset
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .lede{max-width:66ch;color:var(--muted);font-size:16.5px;margin-top:12px}
 header{display:grid;gap:18px;padding-bottom:26px;border-bottom:2px solid var(--key)}
-section{padding-top:46px;scroll-margin-top:20px}
+section{padding-top:46px;scroll-margin-top:62px}
 .sec-intro{max-width:70ch;color:var(--muted);margin:8px 0 20px}
 .label{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
 .mono{font-family:var(--mono)}
@@ -154,9 +154,32 @@ ol.method b{display:block;grid-column:2}
 ol.method span{color:var(--muted);grid-column:2;display:block;margin-top:3px}
 footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 @media (max-width:620px){.step{grid-template-columns:1fr}.step .clock{display:flex;gap:7px}.rtop .meta{text-align:left}}
+
+/* sticky nav */
+.sticky{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line);transform:translateY(-101%);transition:transform .16s ease}
+.sticky.on{transform:none}
+.sticky .sbar{max-width:1020px;margin:0 auto;padding:0 20px;height:46px;display:flex;align-items:center;gap:16px}
+.sticky .home{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.sticky .here{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sticky .here b{color:var(--ink);font-weight:600}
+.sticky .ctl{margin-left:auto;flex:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:4px;padding:6px 11px;cursor:pointer;line-height:1.5}
+.sticky .ctl:hover{border-color:var(--muted)}
+.sticky .ctl[aria-expanded="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.panel{display:none;border-top:1px solid var(--line);background:var(--paper);max-height:72vh;overflow-y:auto}
+.panel.on{display:block}
+.panel .pin{max-width:1020px;margin:0 auto;padding:20px 20px 24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;align-items:start}
+.panel h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 9px;padding-left:7px}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.panel a{display:block;font-size:13.5px;line-height:1.35;color:var(--ink);text-decoration:none;padding:5px 7px;border-radius:3px}
+.panel a:hover{background:var(--faint)}
+.panel a.cur{background:var(--faint);font-weight:600;box-shadow:inset 2px 0 0 var(--key)}
+.panel a i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted);margin-right:7px}
+.panel a.cur i{color:var(--key)}
+@media (max-width:760px){.panel .pin{grid-template-columns:1fr;gap:18px}.sticky .here{display:none}}
+@media print{.sticky{display:none}}
 </style>
 
-<div class="wrap">
+<div class="wrap" id="top">
 <header>
   <div class="eyebrow">Workshop facilitation · Stacey Layne Martin · service design</div>
   <h1>Run-of-Show Book</h1>
@@ -171,7 +194,7 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-si
     <div class="phasetab pt-test"><div class="n">05</div><b>test</b><p>Put it in front of someone who doesn’t already believe in it.</p></div>
   </div>
   <nav class="toc">
-    <a href="#gap">What this adds</a><a href="#gaps">Common gaps</a><a href="#ready">Training plan</a><a href="#gate">Readiness</a><a href="#expect">Expectations</a><a href="#rank">Rank in the room</a><a href="#spine">What goes on the wall</a><a href="#handoff">When it doesn’t flow</a><a href="#r4">1 · Blueprint the Service</a><a href="#r1">2 · Frame the Challenge</a><a href="#r2">3 · Ideas to Concepts</a><a href="#r3">4 · Sequence the Work</a><a href="#r5">5 · Strategy Signal</a><a href="#r6">6 · One Owner</a><a href="#r7">7 · Lightning Decision Jam</a><a href="#r8">8 · What We Need to Know</a><a href="#r9">9 · Requirements</a><a href="#types">Session types</a><a href="#tools">Tool index</a><a href="#compose">Build your own</a><a href="#teach">Teach it</a><a href="#sources">Sources</a>
+    <a href="#gap">What this adds</a><a href="#gaps">Common gaps</a><a href="#ready">Training plan</a><a href="#gate">Readiness</a><a href="#expect">Expectations</a><a href="#rank">Rank in the room</a><a href="#spine">What goes on the wall</a><a href="#handoff">When it doesn’t flow</a><a href="#r4">1 · Blueprint the Service</a><a href="#r1">2 · Frame the Challenge</a><a href="#r2">3 · Ideas to Concepts</a><a href="#r3">4 · Sequence the Work</a><a href="#r5">5 · Strategy Signal</a><a href="#r6">6 · One Owner</a><a href="#r7">7 · Lightning Decision Jam</a><a href="#r8">8 · What We Need to Know</a><a href="#r9">9 · Requirements</a><a href="#r10">10 · What Will Kill This</a><a href="#types">Session types</a><a href="#tools">Tool index</a><a href="#compose">Build your own</a><a href="#teach">Teach it</a><a href="#sources">Sources</a>
   </nav>
 </header>
 
@@ -1206,3 +1229,91 @@ document.getElementById("recipebody").innerHTML=RECIPES.map(recipeHTML).join("")
 })();
 
 </script>
+<script>
+/* ---------- sticky contents bar ----------
+   One long document beats several short ones here: Cmd+F reaches every word
+   and the whole book stays one portable file. What a long document needs is
+   a way to move around it without going back to the top, which is this. */
+(function(){
+  var GROUPS=[
+    ["Before you run",["gap","gaps","ready","reps","gate","expect","rank","spine","handoff"]],
+    ["The run-of-shows",["recipes","r4","r1","r2","r3","r5","r6","r7","r8","r9","r10"]],
+    ["Reference",["types","tools","compose","teach","sources"]]
+  ];
+  function label(sec){
+    var r=sec.classList.contains("recipe");
+    var h=sec.querySelector(r?".rtop h2":"h2");
+    var n=r?sec.querySelector(".rtop .eyebrow"):null;
+    var t=h?h.textContent.trim():sec.id;
+    return [n?n.textContent.replace(/\D+/g,""):"", t];
+  }
+  var items=[],seen={};
+  GROUPS.forEach(function(g){
+    g[1].forEach(function(id){
+      var sec=document.getElementById(id);
+      if(!sec||seen[id])return;
+      seen[id]=1;
+      var L=label(sec);
+      items.push({id:id,group:g[0],num:L[0],text:L[1],el:sec});
+    });
+  });
+  if(!items.length)return;
+
+  var bar=document.createElement("div");
+  bar.className="sticky";
+  var groups=GROUPS.map(function(g){
+    var li=items.filter(function(it){return it.group===g[0]}).map(function(it){
+      return '<li><a href="#'+it.id+'" data-id="'+it.id+'">'+
+        (it.num?'<i>'+it.num+'</i>':'')+it.text.replace(/[<>&]/g,"")+'</a></li>';
+    }).join("");
+    return '<div><h4>'+g[0]+'</h4><ul>'+li+'</ul></div>';
+  }).join("");
+  bar.innerHTML='<div class="sbar">'+
+    '<a class="home" href="#top">Run-of-Show Book</a>'+
+    '<span class="here" id="here"></span>'+
+    '<button class="ctl" type="button" aria-expanded="false">Contents</button>'+
+    '</div><div class="panel"><div class="pin">'+groups+'</div></div>';
+  document.body.appendChild(bar);
+
+  var btn=bar.querySelector(".ctl"),panel=bar.querySelector(".panel"),here=bar.querySelector("#here");
+  var links={};
+  bar.querySelectorAll(".panel a").forEach(function(a){links[a.dataset.id]=a});
+
+  function close(){panel.classList.remove("on");btn.setAttribute("aria-expanded","false")}
+  btn.addEventListener("click",function(){
+    var open=panel.classList.toggle("on");
+    btn.setAttribute("aria-expanded",open?"true":"false");
+  });
+  panel.addEventListener("click",function(e){if(e.target.closest("a"))close()});
+  document.addEventListener("click",function(e){if(!bar.contains(e.target))close()});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape")close();
+    if(e.key==="c"&&!/^(INPUT|TEXTAREA)$/.test((e.target.tagName||""))&&!e.metaKey&&!e.ctrlKey&&!e.altKey){
+      e.preventDefault();btn.click();
+    }
+  });
+
+  var cur=null,tick=false;
+  function spy(){
+    tick=false;
+    var y=window.scrollY||document.documentElement.scrollTop;
+    bar.classList.toggle("on",y>260);
+    if(y<=260&&panel.classList.contains("on"))close();
+    var best=null;
+    for(var i=0;i<items.length;i++){
+      if(items[i].el.getBoundingClientRect().top<=90)best=items[i];
+    }
+    if(best===cur)return;
+    if(cur&&links[cur.id])links[cur.id].classList.remove("cur");
+    cur=best;
+    if(cur){
+      if(links[cur.id])links[cur.id].classList.add("cur");
+      here.innerHTML=cur.group+' &nbsp;·&nbsp; <b>'+(cur.num?cur.num+" · ":"")+cur.text.replace(/[<>&]/g,"")+'</b>';
+    }else here.textContent="";
+  }
+  addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(spy)}},{passive:true});
+  addEventListener("resize",spy,{passive:true});
+  spy();
+})();
+</script>
+
