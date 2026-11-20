@@ -98,12 +98,12 @@ nav.toc a:hover{background:var(--faint)}
 .rtop{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;padding:20px 24px;cursor:pointer;user-select:none}
 .rtop:hover{background:var(--faint)}
 .rtop:focus-visible{outline:2px solid var(--key);outline-offset:-3px}
-.rtl{display:flex;align-items:center;gap:13px;min-width:0}
-.rtop .cxi{flex:none;width:19px;height:19px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;line-height:1;transition:transform .14s ease,color .14s ease}
+.rtl{display:flex;align-items:flex-start;gap:13px;min-width:0}
+.rtl p.purpose{max-width:62ch;color:var(--muted);margin-top:7px;user-select:text}
+.rtop .cxi{flex:none;margin-top:3px;width:19px;height:19px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;line-height:1;transition:transform .14s ease,color .14s ease}
 .rtop:hover .cxi{color:var(--ink)}
 .rtop[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
 .rtop .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
-.rhead p.purpose{max-width:64ch;color:var(--muted)}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;padding-top:4px}
 .fact{border-left:2px solid var(--line);padding-left:11px}
 .fact .label{margin-bottom:3px}
@@ -1238,11 +1238,10 @@ function recipeHTML(r){
     </div></div>`}).join("");
   return `<section class="recipe" id="${r.id}">
     <div class="rtop">
-      <div class="rtl"><span class="cxi" aria-hidden="true">▾</span><div><div class="eyebrow">Run-of-show ${r.n}</div><h2>${esc(r.title)}</h2></div></div>
+      <div class="rtl"><span class="cxi" aria-hidden="true">▾</span><div><div class="eyebrow">Run-of-show ${r.n}</div><h2>${esc(r.title)}</h2><p class="purpose">${esc(r.purpose)}</p></div></div>
       <div class="meta">${esc(r.time)} · ${esc(r.people)} people<br>${r.phases.map(p=>`<span class="ph ${p}">${PH[p]}</span>`).join(" ")}</div>
     </div>
     <div class="rhead">
-      <p class="purpose">${esc(r.purpose)}</p>
       <div class="facts">${facts}</div>
     </div>
     <div class="steps">${steps}</div>
