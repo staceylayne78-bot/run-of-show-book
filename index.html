@@ -150,8 +150,8 @@ td.num{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-n
 ol.method{counter-reset:m;list-style:none;margin:0;padding:0;display:grid;gap:13px}
 ol.method li{display:grid;grid-template-columns:30px 1fr;gap:12px;font-size:14.5px}
 ol.method li::before{counter-increment:m;content:counter(m);font-family:var(--display);font-weight:700;font-size:20px;color:var(--key);line-height:1.05}
-ol.method b{display:block}
-ol.method span{color:var(--muted)}
+ol.method b{display:block;grid-column:2}
+ol.method span{color:var(--muted);grid-column:2;display:block;margin-top:3px}
 footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 @media (max-width:620px){.step{grid-template-columns:1fr}.step .clock{display:flex;gap:7px}.rtop .meta{text-align:left}}
 </style>
@@ -523,10 +523,10 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-si
 
 <section id="compose">
   <h2>Build your own</h2>
-  <p class="sec-intro">This is the toolkit's own "Using the toolkit" method, steps 1 through 7, with the facilitation layer it leaves out added as steps 8 through 10. Do the first seven before you touch a calendar invite.</p>
+  <p class="sec-intro">Steps 1 through 7 are the outlining method most design thinking toolkits already carry — problem, opportunity, goals, constraints, phases, tools, deliverables. Steps 8 through 10 are the facilitation layer they leave out, and they are the difference between an agenda and a run-of-show. Do the first seven before you touch a calendar invite.</p>
   <ol class="method">
     <li><b>Identify the problem.</b><span>Write a Problem Statement. It guides every phase after this, so the time spent here comes back. If you can't write it yet, that's what run-of-show 1 is for.</span></li>
-    <li><b>Define the opportunity.</b><span>Respond to the Problem Statement with a How Might We. Get stakeholder alignment on both before you go further — the toolkit is emphatic about this and it's the step people skip.</span></li>
+    <li><b>Define the opportunity.</b><span>Respond to the Problem Statement with a How Might We. Get stakeholder alignment on both before you go further — every toolkit is emphatic about this, and it's still the step people skip.</span></li>
     <li><b>Specify your goals.</b><span>What do you want out of the process? Attach a number where you can, so you can tell afterwards whether you got it. Importance vs. Difficulty or the Innovation Ambition Matrix will rank them if stakeholders disagree.</span></li>
     <li><b>Consider your constraints.</b><span>Time, money, what's already been researched, brand standards, anything that makes a plan unexecutable. Revisit these as you go and update them when they change.</span></li>
     <li><b>Choose your phases.</b><span>You do not have to use every phase. Goals and constraints will tell you to shorten one or skip it. Starting at analyze because research already exists is a legitimate opening, not a shortcut.</span></li>
@@ -537,9 +537,9 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-si
     <li><b>Total the times, add 20%, then cut a tool.</b><span>Every first draft is too full. The version you run should look slightly too short on paper. It won't be. And write the Decider's name on the agenda before the session, not during it.</span></li>
   </ol>
   <h3 style="margin-top:30px">Blank outline</h3>
-  <p class="sec-intro">Fill this in and you have a run-of-show. It's the toolkit's outline with two columns added.</p>
+  <p class="sec-intro">Fill this in and you have a run-of-show. It’s an ordinary phase outline with the two columns that make it runnable: how long, and what each step hands the next.</p>
   <div class="tablebox"><table>
-    <thead><tr><th>Phase</th><th>Tool &amp; page</th><th>Deliverable</th><th>Time</th><th>Hands the next step…</th></tr></thead>
+    <thead><tr><th>Phase</th><th>Tool</th><th>Deliverable</th><th>Time</th><th>Hands the next step…</th></tr></thead>
     <tbody>
       <tr><td><span class="ph brk">open</span></td><td>Frame, Decider, rules</td><td>A room that knows what done looks like</td><td class="num">10m</td><td>Permission to move fast</td></tr>
       <tr><td><span class="ph discover">discover</span></td><td class="mono">?</td><td class="mono">?</td><td class="num">?</td><td class="mono">?</td></tr>
