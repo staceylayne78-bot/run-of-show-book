@@ -1,0 +1,1208 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Run-of-Show Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4ED; --card:#FFFFFF; --ink:#1A1A1A; --muted:#5E5B55; --line:#DEDAD0; --faint:#F0ECE2;
+  --key:#C8102E; --keywash:#FAE8EA;
+  --frame:#6E6E6E; --framewash:#EDEDEB;
+  --discover:#D98030; --discoverwash:#FAEEE1;
+  --analyze:#C4511E; --analyzewash:#F9E8DF;
+  --ideate:#2F8A5C; --ideatewash:#E2F0E8;
+  --prototype:#2E3F8F; --prototypewash:#E5E8F5;
+  --test:#2A8DBC; --testwash:#E2F0F7;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#171614; --card:#201F1C; --ink:#EDEAE3; --muted:#A09C93; --line:#34322D; --faint:#26241F;
+  --key:#F07080; --keywash:#3A2024;
+  --frame:#A8A8A4; --framewash:#2C2C2A;
+  --discover:#E9A95E; --discoverwash:#39291A;
+  --analyze:#E8794A; --analyzewash:#3A241A;
+  --ideate:#5FBF8D; --ideatewash:#1C3328;
+  --prototype:#8E9EE2; --prototypewash:#222741;
+  --test:#5FBDE4; --testwash:#1B2F3A;
+}}
+:root[data-theme="dark"]{
+  --paper:#171614; --card:#201F1C; --ink:#EDEAE3; --muted:#A09C93; --line:#34322D; --faint:#26241F;
+  --key:#F07080; --keywash:#3A2024;
+  --frame:#A8A8A4; --framewash:#2C2C2A;
+  --discover:#E9A95E; --discoverwash:#39291A;
+  --analyze:#E8794A; --analyzewash:#3A241A;
+  --ideate:#5FBF8D; --ideatewash:#1C3328;
+  --prototype:#8E9EE2; --prototypewash:#222741;
+  --test:#5FBDE4; --testwash:#1B2F3A;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0}
+.wrap{max-width:1020px;margin:0 auto;padding-block:40px 80px;padding-left:20px;padding-right:20px}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.12}
+h1{font-size:clamp(32px,5.4vw,50px);font-weight:700;letter-spacing:-.025em}
+h2{font-size:28px;font-weight:700;letter-spacing:-.015em}
+h3{font-size:19px;font-weight:600}
+h4{font-size:16.5px;font-weight:600}
+p{margin:0}
+a{color:var(--prototype)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--key);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{max-width:66ch;color:var(--muted);font-size:16.5px;margin-top:12px}
+header{display:grid;gap:18px;padding-bottom:26px;border-bottom:2px solid var(--key)}
+section{padding-top:46px;scroll-margin-top:20px}
+.sec-intro{max-width:70ch;color:var(--muted);margin:8px 0 20px}
+.label{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+.mono{font-family:var(--mono)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+nav.toc a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:3px;padding:5px 10px}
+nav.toc a:hover{background:var(--faint)}
+
+/* phase tabs, after the toolkit's own index tabs */
+.phaserow{display:flex;flex-wrap:wrap;gap:0;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.phasetab{flex:1 1 140px;padding:11px 13px;color:#fff}
+.phasetab .n{font-family:var(--mono);font-size:11px;opacity:.85}
+.phasetab b{display:block;font-family:var(--display);font-size:16px;font-weight:600;margin:1px 0 4px}
+.phasetab p{font-size:12px;line-height:1.4;opacity:.93}
+.pt-frame{background:var(--frame)}.pt-discover{background:#D98030}.pt-analyze{background:#C4511E}
+.pt-ideate{background:#2F8A5C}.pt-prototype{background:#2E3F8F}.pt-test{background:#2A8DBC}
+
+.ph{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:lowercase;padding:2px 7px;border-radius:2px;white-space:nowrap}
+.ph.frame{background:var(--framewash);color:var(--frame)}
+.ph.discover{background:var(--discoverwash);color:var(--discover)}
+.ph.analyze{background:var(--analyzewash);color:var(--analyze)}
+.ph.ideate{background:var(--ideatewash);color:var(--ideate)}
+.ph.prototype{background:var(--prototypewash);color:var(--prototype)}
+.ph.test{background:var(--testwash);color:var(--test)}
+.ph.brk{background:var(--faint);color:var(--muted)}
+.pg{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.wk{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.module{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin-top:16px;display:grid;gap:14px}
+.mhead{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start}
+.mhead .meta{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.mgap{font-size:14px;color:var(--muted);max-width:66ch}
+.mgap b{color:var(--ink)}
+.mlist{display:grid;gap:0;border-top:1px solid var(--line)}
+.mitem{display:grid;grid-template-columns:1fr auto;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;align-items:baseline}
+.mitem .t{font-size:13px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.mitem .sub{display:block;font-size:13px;color:var(--muted)}
+.brings{background:var(--ideatewash);border-radius:5px;padding:12px 14px;font-size:14px}
+.brings b{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ideate);display:block;margin-bottom:3px}
+.outside{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:1px 5px;white-space:nowrap}
+
+/* recipe */
+.recipe{background:var(--card);border:1px solid var(--line);border-radius:6px;margin-top:24px;overflow:hidden}
+.rhead{padding:22px 24px;border-bottom:1px solid var(--line);display:grid;gap:12px}
+.rtop{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start}
+.rtop .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
+.rhead p.purpose{max-width:64ch;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;padding-top:4px}
+.fact{border-left:2px solid var(--line);padding-left:11px}
+.fact .label{margin-bottom:3px}
+.fact p{font-size:13.5px}
+.steps{padding:6px 24px 22px}
+.step{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:0}
+.step .clock{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.step .clock span{display:block;font-size:11px}
+.step h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-bottom:6px}
+.step .how{font-size:14.5px}
+.step .say{background:var(--keywash);border-radius:4px;padding:9px 12px;margin-top:9px;font-size:14px}
+.step .say b{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--key);display:block;margin-bottom:2px}
+.step .eg{font-size:13.5px;color:var(--muted);margin-top:8px;border-left:2px solid var(--line);padding-left:11px}
+.handoff{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.handoff .arr{color:var(--ideate);font-weight:700;line-height:1.3}
+.rfoot{padding:14px 24px;background:var(--faint);font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.rvar{padding:18px 24px 20px;border-top:1px solid var(--line);display:grid;gap:14px}
+.rvar .vb b{display:block;font-size:13.5px;margin-bottom:3px}
+.rvar .vb p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
+
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500;background:var(--paper)}
+td.num{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.card h3{font-size:16.5px;margin-bottom:5px}
+.card p{font-size:14px;color:var(--muted)}
+.note{background:var(--faint);border-radius:5px;padding:14px 16px;font-size:14px}
+.gates{display:grid;gap:12px;margin:18px 0}
+.gate{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 18px;border-left:3px solid var(--key)}
+.gate h4{margin:0 0 6px;font-size:16px}
+.gate .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--key);display:block;margin-bottom:4px}
+.gate .tst{font-size:14px;margin:8px 0 0;padding:9px 12px;background:var(--faint);border-radius:5px}
+.gate .tst b{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.drain{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:20px 22px;margin:20px 0}
+.mech{display:grid;gap:11px;margin:14px 0 0}
+.mech>div{font-size:14.5px;padding-left:15px;border-left:2px solid var(--analyze)}
+.fix{counter-reset:f;display:grid;gap:12px;margin:16px 0 0}
+.fix>div{font-size:14.5px;position:relative;padding-left:32px}
+.fix>div:before{counter-increment:f;content:counter(f);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--ideatewash);color:var(--ideate);font-family:var(--mono);font-size:11px;display:grid;place-items:center;font-weight:600}
+.mine{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:1px 5px;margin-left:5px;white-space:nowrap}
+.note ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
+.warn{background:var(--keywash);border-left:3px solid var(--key);padding:13px 15px;border-radius:0 5px 5px 0;font-size:14px}
+.warn b{color:var(--key)}
+ol.method{counter-reset:m;list-style:none;margin:0;padding:0;display:grid;gap:13px}
+ol.method li{display:grid;grid-template-columns:30px 1fr;gap:12px;font-size:14.5px}
+ol.method li::before{counter-increment:m;content:counter(m);font-family:var(--display);font-weight:700;font-size:20px;color:var(--key);line-height:1.05}
+ol.method b{display:block}
+ol.method span{color:var(--muted)}
+footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:620px){.step{grid-template-columns:1fr}.step .clock{display:flex;gap:7px}.rtop .meta{text-align:left}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Workshop facilitation · Stacey Layne Martin · service design</div>
+  <h1>Run-of-Show Book</h1>
+  <p class="lede">A design thinking toolkit tells you which tool to pick. It doesn't tell you how to run the room — what to say, how long each thing takes, when to vote, who decides. These are ten complete run-of-shows written out minute by minute, plus the method for assembling your own. Every step names the tool it uses, so you can print whichever version of that canvas your own toolkit already has.</p>
+  <p class="lede" style="font-size:15.5px;color:var(--muted);margin-top:12px">Written for a team that already had a tool library and still couldn't reliably get through an hour. Most enterprise design groups have one: forty-odd canvases, each with prompts and a stated output, and nothing anywhere about the minute-to-minute. This is the missing layer, assembled from <a href="#sources">five outside systems</a> and credited step by step. Take any of it.</p>
+  <div class="phaserow">
+    <div class="phasetab pt-frame"><div class="n">start here</div><b>frame</b><p>Agree what the problem is and who has it, before anything else.</p></div>
+    <div class="phasetab pt-discover"><div class="n">01</div><b>discover</b><p>Go and find out what happens, from the people it happens to.</p></div>
+    <div class="phasetab pt-analyze"><div class="n">02</div><b>analyze</b><p>Turn a wall of raw material into a short list you can act on.</p></div>
+    <div class="phasetab pt-ideate"><div class="n">03</div><b>ideate</b><p>Generate widely, then cut hard on desirable, viable, feasible.</p></div>
+    <div class="phasetab pt-prototype"><div class="n">04</div><b>prototype</b><p>Make it concrete enough that someone can argue with the specifics.</p></div>
+    <div class="phasetab pt-test"><div class="n">05</div><b>test</b><p>Put it in front of someone who doesn’t already believe in it.</p></div>
+  </div>
+  <nav class="toc">
+    <a href="#gap">What this adds</a><a href="#gaps">Common gaps</a><a href="#ready">Training plan</a><a href="#gate">Readiness</a><a href="#expect">Expectations</a><a href="#rank">Rank in the room</a><a href="#spine">What goes on the wall</a><a href="#handoff">When it doesn’t flow</a><a href="#r4">1 · Blueprint the Service</a><a href="#r1">2 · Frame the Challenge</a><a href="#r2">3 · Ideas to Concepts</a><a href="#r3">4 · Sequence the Work</a><a href="#r5">5 · Strategy Signal</a><a href="#r6">6 · One Owner</a><a href="#r7">7 · Lightning Decision Jam</a><a href="#r8">8 · What We Need to Know</a><a href="#r9">9 · Requirements</a><a href="#types">Session types</a><a href="#tools">Tool index</a><a href="#compose">Build your own</a><a href="#teach">Teach it</a><a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<section id="gap">
+  <h2>What a run-of-show adds to a tool library</h2>
+  <p class="sec-intro">A toolkit is two things: a library of tools, and a method for outlining which of them to use. The good ones already carry the principle this book is built on — <i>the output of a tool in one phase should generate the input of a tool in the next.</i> What they stop short of is the hour itself.</p>
+  <div class="grid">
+    <div class="card"><h3>A toolkit gives you</h3><p>Dozens of tools across the phases, each with a canvas, prompts and a stated output. A method for outlining a process: identify the problem, define the opportunity, specify goals, consider constraints, choose phases, select tools, detail deliverables. And, if it's honest, permission to be non-linear.</p></div>
+    <div class="card"><h3>This book adds</h3><p>Timings per step. The words to say when you open an activity and when you cut a discussion off. Group sizes and who should be in the room. How the voting actually works. A named Decider. A commit step with owners and dates. And the handoff written out between every pair of steps.</p></div>
+    <div class="card"><h3>So use them together</h3><p>Pick the run-of-show that matches what the room needs to leave with. Print the canvases it names from whichever toolkit you have. Run the clock. When none of the ten fits, use <a href="#compose">Build your own</a> — a toolkit's own outline method with the facilitation layer added.</p></div>
+  </div>
+  <div class="note" style="margin-top:16px"><b>Four habits underneath every run-of-show here.</b> None of these are in any tool library I’ve worked from, and all four are why a session lands.
+  <ul>
+    <li><b>Work together, alone.</b> Generate in silence, individually, before anything is discussed. The loudest person stops setting the agenda.</li>
+    <li><b>Vote instead of debating.</b> Dots are faster than discussion and anonymous, so people mark what they think rather than what their manager thinks. Most toolkits have a version of this; the one I work from calls it Visualize the Vote.</li>
+    <li><b>Name a Decider.</b> One person breaks ties and signs off. Votes inform them; they decide. Without this, workshops end in a follow-up meeting.</li>
+    <li><b>End with owners.</b> Every output leaves with a name and a date on it, or it leaves marked "no owner yet" — said out loud, written on the wall.</li>
+  </ul></div>
+</section>
+
+<section id="gaps">
+  <h2>What tool libraries usually don’t have</h2>
+  <p class="sec-intro">Forty-odd tools is a lot, and there are still whole kinds of session a design thinking toolkit has no tool for. These aren't flaws — a toolkit scopes itself deliberately — but they are the reason one process starts to feel like the only process. Each gap is a door into a different way of using what's already on the shelf. The module column points into the <a href="#ready">training plan</a> below, which is how I closed each one.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>Usually missing</th><th>What it would let you do</th><th>Where to learn it</th></tr></thead>
+    <tbody>
+      <tr><td><b>Any retrospective</b></td><td>Look backwards. Nearly every design thinking tool points forward at a problem or a solution; none asks how the work itself is going.</td><td class="wk">Module 1</td></tr>
+      <tr><td><b>A long-term goal tool</b></td><td>Enter the process from a two-year ambition instead of a problem. Frame assumes something is broken.</td><td class="wk">Module 2</td></tr>
+      <tr><td><b>A roadmap</b></td><td>Place work over time. A prioritization matrix ranks, but ranking is not sequencing and neither is assigning.</td><td class="wk">Module 2</td></tr>
+      <tr><td><b>A commit step</b></td><td>End with owners and dates. Every tool produces an output; none of them produces accountability.</td><td class="wk">Modules 1–2</td></tr>
+      <tr><td><b>Facilitation itself</b></td><td>Run any of them. A toolkit says which tool and what it outputs, never how long, who decides, or what you say.</td><td class="wk">Module 0</td></tr>
+      <tr><td><b>Research depth</b></td><td>A discover phase will name a dozen tools; the craft of interviewing, observing and synthesizing sits underneath all of them.</td><td class="wk">Module 4</td></tr>
+      <tr><td><b>Co-creation</b></td><td>Build the journey map <i>with</i> customers instead of about them. A toolkit will name co-creation on one page; nothing teaches it.</td><td class="wk">Module 4</td></tr>
+      <tr><td><b>System mapping</b></td><td>See stakeholders, value flows and ecosystems. A value web canvas is the nearest thing and it’s one page.</td><td class="wk">Module 4</td></tr>
+      <tr><td><b>Rehearsal prototyping</b></td><td>Act a service out rather than draw it. A role play card hints at a whole family of methods.</td><td class="wk">Module 4</td></tr>
+      <tr><td><b>The program layer</b></td><td>Treat a workshop as one iteration in a project rather than an event. Nothing in a tool library is bigger than a session.</td><td class="wk">Module 5</td></tr>
+      <tr><td><b>A theory of participation</b></td><td>Know <i>why</i> silent-then-vote works, so you can invent formats instead of only running them.</td><td class="wk">Modules 5–6</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="ready">
+  <h2>Training plan</h2>
+  <p class="sec-intro">Seven modules, each one aimed at a gap above. The point isn't to adopt another company's system — it's to come back and use your own differently. Every module ends with the same question: <b>what does this change about how I'd use the toolkit?</b> Roughly 15 hours, self-paced; there's no prize for finishing it in three weeks.</p>
+  <div id="modulebody"></div>
+</section>
+
+<section id="reps">
+  <h2>Reps</h2>
+  <div class="grid">
+    <div class="card"><h3>Learning isn't running</h3><p>Nothing on this page substitutes for having run a session once. That's why the progress marks below say "ran it," not "read it" — and why the modules are deliberately interleaved with the reps rather than stacked in front of them.</p></div>
+    <div class="card"><h3>Cheap reps exist</h3><p><a href="https://www.workshopr.io/library/recipes/">Workshopr</a> has twelve free 60-minute scripted sessions, no sign-in. Run one between modules when you want a rep without designing anything. The script is written; your only job is the room.</p></div>
+    <div class="card"><h3>Teammates go up the ladder</h3><p>Don't start someone new on a half-day session. Shadow, then one tool, then a short session, then co-facilitate. The <a href="#teach">teaching ladder</a> has the detail.</p></div>
+  </div>
+
+  <h3 style="margin-top:30px">Five reps, in this order</h3>
+  <p class="sec-intro">Lowest risk first — which is deliberately not the order the run-of-shows chain in. Learn them backwards, run them forwards. Each rep is a real session with a real outcome; practicing on an invented problem teaches the steps but not the room.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>Rep</th><th>Run</th><th>On</th><th>Why this order</th></tr></thead>
+    <tbody>
+      <tr><td class="num">0</td><td><a href="#r10">What Will Kill This</a></td><td>A project your team is already committed to</td><td>Forty-five minutes, one wall, no canvases to print, and almost nothing to get wrong — the room does the work and you mostly hold the tense. Run it before the ladder proper. It is the cheapest way to find out what facilitating feels like in front of people whose opinion of you matters.</td></tr>
+      <tr><td class="num">1</td><td><a href="#r3">Sequence the Work</a></td><td>Work your team has already agreed on</td><td>Shortest, most structured, and the room arrives agreeing. Good place to practice the Decider moment.</td></tr>
+      <tr><td class="num">2</td><td><a href="#r1">Frame the Challenge</a></td><td>A brief that arrived vague</td><td>Adds silent generation and synthesis. Still only two hours, and the output is obviously useful.</td></tr>
+      <tr><td class="num">3</td><td><a href="#r2">Ideas to Concepts</a></td><td>A framed opportunity from rep 2</td><td>Three hours and a break. The first one where energy management matters.</td></tr>
+      <tr><td class="num">4</td><td><a href="#r4">Blueprint the Service</a></td><td>A journey that breaks at handoffs</td><td>Your own session, extended past the journey map. Half a day, mixed room, customers present — and your SDN co-creation evidence.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>Interleave, don’t stack.</b> Rep 0 comes before any of the modules — it needs no preparation and the point is to have stood in front of a room once before you start reading about it. Then module 0, then rep 1. Module 1, then rep 2. The modules land differently once you've had a room go quiet on you — before that they're abstract, after they explain something you've felt.</div>
+  <p style="margin-top:14px;font-size:14px;color:var(--muted)">Run-of-shows 5 through 9 aren’t in the ladder. 5 needs a leadership room and a two-year question, 6 needs a room of one, and 7 through 9 each need a specific thing to have gone wrong first — a stuck team, an ideation that ran out of information, a concept waiting on requirements. They are there when the occasion arrives rather than when you’re ready for them.</p>
+</section>
+
+<section id="gate">
+  <h2>Readiness</h2>
+  <p class="sec-intro">What has to be true before the session is worth holding. Three of these are gates — if one fails, the right move is to not run it. The rest are fixable, but only before the invite goes out. The toolkit has nothing on this: it begins at the first tool, which assumes someone already decided the session should happen.</p>
+
+  <h3 style="margin:26px 0 0">The three gates</h3>
+  <div class="gates">
+    <div class="gate">
+      <span class="num">Gate 1</span>
+      <h4>The question is actually open</h4>
+      <p>A workshop where the answer is already chosen is a ratification with sticky notes, and rooms can smell it inside twenty minutes. Once they do, you don't get the room back — and you don't get the next one either.</p>
+      <div class="tst"><b>How to test it</b>Ask the sponsor: &ldquo;if the room lands somewhere you don't expect, what changes?&rdquo; If the answer is nothing, you've been asked to stage a decision, not make one.</div>
+    </div>
+    <div class="gate">
+      <span class="num">Gate 2</span>
+      <h4>The Decider is in the room, knows they are, and stays</h4>
+      <p>Not a representative. Not someone who'll &ldquo;take it back.&rdquo; A session that ends in a recommendation to a person who wasn't there produces a document, and documents don't get decided — they get circulated.</p>
+      <div class="tst"><b>How to test it</b>Can you name them? Have you told them, in those words? Are they there for the whole thing, not just the last half hour?</div>
+    </div>
+    <div class="gate">
+      <span class="num">Gate 3</span>
+      <h4>The output has somewhere to go on Monday</h4>
+      <p>Every workshop produces something. Whether it survives the week depends on whether receiving work already exists — a backlog, a brief, a deck with a date on it. If there's nowhere for it to land, you're producing a wall photo.</p>
+      <div class="tst"><b>How to test it</b>Name the person who takes the output and the date they need it. If you can't, move the session later, not earlier.</div>
+    </div>
+  </div>
+
+  <div class="drain">
+    <div class="eyebrow">The one that fails most often</div>
+    <h3 style="margin:4px 0 10px">The room doesn't know what's already been tried</h3>
+    <p>Ideation circles the drain of what we already know. It reads as a facilitation problem — the exercise didn't land, the group was low-energy, somebody dominated. It usually isn't. A mixed-depth room doesn't average out to medium depth. It floors to the shallowest shared knowledge, because that's the only ground everyone can stand on. Three mechanisms do the flooring, and they're worth knowing separately because they need different fixes.</p>
+    <div class="mech">
+      <div><b>People can only recombine what they hold.</b> Ideas are a function of inputs. Nobody in the room is holding back the good idea; most of them don't have the material to build it from. Asking harder, or asking in silence, doesn't add material.</div>
+      <div><b>Voting rewards legibility, not novelty.</b> In a heat map, an idea everyone understands collects dots and an idea one person understands doesn't. Novel ideas lose structurally, before anyone has judged them on merit — and the room reads the result as consensus.</div>
+      <div><b>The person who knows stays quiet.</b> Saying &ldquo;we tried that in 2023, here's what killed it&rdquo; takes four minutes. Silent writing gives ninety seconds and a sticky note. So the deepest knowledge in the room is exactly the knowledge the format can't accept, and the expert learns to sit on it.</div>
+    </div>
+    <h4 style="margin:22px 0 0;font-size:15px">What to do about it, in order of leverage</h4>
+    <div class="fix">
+      <div><b>Name the dead ideas out loud, first.</b> Ten minutes at the open: here are the five things that come up every time, and what stopped each one. Write them on a sheet headed <i>already explored</i> and leave it up all session. You're not banning them — you're making it cost something to re-propose one. This is the single move that stops the circling, and it costs you ten minutes.</div>
+      <div><b>Write the explored-territory brief.</b> One or two pages, circulated before: what's been tried, what happened, why it stopped. Stops, not successes — the reasons things died are the useful part and the part nobody writes down. Your toolkit has no tool for this. It is the highest-value page you could add to it.</div>
+      <div><b>Move Precursors &amp; Analogs out of the session.</b> At it gets twenty minutes, which surfaces what's top of mind — which is the drain again, one step removed. Assign it a week out instead: three examples each, from outside your own industry, with a line on what the example actually does. Then run the in-session version as the share-out only.</div>
+      <div><b>Give the expert a role, not a turn.</b> The cheap version: hand them a visible card and make them the &ldquo;that's been tried&rdquo; caller, with standing permission to interrupt. The expensive version is a live Expert Interview at the open — which transfers what they know into everyone's hands before the generating starts, but means scheduling experts weeks out, so it's a choice about planning time rather than a default. A role they can play beats a turn they'll decline.</div>
+      <div><b>Vote on problems, not solutions, when depth is uneven.</b> Everyone in a mixed room can rank a problem by how much it hurts. Not everyone can judge a novel solution. This is the move Lightning Decision Jam is built on, and it's why that format works in rooms where ideation doesn't.</div>
+      <div><b>Split the vote into two passes.</b><span class="mine">not from a source</span> One heat map for <i>this is new to us</i>, one for <i>we could actually do this</i>. The overlap is the interesting set. The feasibility-only cluster is the drain made visible — which means you can point at it instead of arguing with it.</div>
+    </div>
+  </div>
+
+  <h3 style="margin:30px 0 0">Six things to fix before the invite goes out</h3>
+  <div class="tablebox" style="margin-top:12px"><table>
+    <thead><tr><th>Has to be true</th><th>How you know it isn't</th><th>Fix it by</th></tr></thead>
+    <tbody>
+      <tr><td><b>Scope fits in one sentence</b></td><td>You and the sponsor describe the session differently when asked separately</td><td>Write the sentence, send it, wait for them to send the same sentence back. No invites before that.</td></tr>
+      <tr><td><b>The room is levelled</b></td><td>You can predict who will have to ask what a term means</td><td>The explored-territory brief, plus five minutes of plain-language glossary at the open. Say the terms out loud so nobody has to admit they didn't know.</td></tr>
+      <tr><td><b>Constraints are stated</b></td><td>Nobody can tell you the budget, the tech reality or the regulatory line</td><td>Get them in writing from the sponsor beforehand. Unstated constraints don't prevent bad ideas — they kill good ones quietly, two weeks later, with nobody in the room to defend them.</td></tr>
+      <tr><td><b>The right people, the right number</b></td><td>Nobody present would have to build it, sell it or support it</td><td>Add one builder and one frontline person. 5–8 for making things, 8–12 for mapping things. Over 12 you're running a meeting.</td></tr>
+      <tr><td><b>Pre-read reality</b></td><td>You're assuming it'll get done</td><td>Assume it won't. Budget 20–30 minutes of reading time inside the session and put it on the agenda so it reads as design, not slippage.</td></tr>
+      <tr><td><b>You've rehearsed the exercise you're least sure of</b></td><td>You're hoping that one will be fine</td><td>Run it once with one colleague. The exercise you're avoiding rehearsing is the one that will go wrong.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin:30px 0 0">If it isn't ready, run this instead</h3>
+  <p class="sec-intro" style="margin-top:6px">Doubles as a router. Find the thing you're missing, run what's in the second column.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>What's missing</th><th>Run this</th></tr></thead>
+    <tbody>
+      <tr><td>The decision is already made</td><td>A 30-minute readout where they announce it themselves. Don't launder it through a workshop.</td></tr>
+      <tr><td>The Decider can't attend</td><td>A 1:1 with the Decider first. Then the workshop, with them in it.</td></tr>
+      <tr><td>Nobody knows the prior art</td><td>A prior-art sprint, by you, alone: four 30-minute interviews, then write the explored-territory brief. A week of your time that saves the session.</td></tr>
+      <tr><td>Research exists, nobody's made sense of it</td><td>The front half of <a href="#r4">run-of-show 1</a> — Journey Map and pain points, no blueprint. Half a day.</td></tr>
+      <tr><td>No shared picture of the service</td><td><a href="#r4">Run-of-show 1 · Blueprint the Service</a></td></tr>
+      <tr><td>A picture, but no agreed problem</td><td><a href="#r1">Run-of-show 2 · Frame the Challenge</a></td></tr>
+      <tr><td>An agreed problem, no ideas worth having</td><td><a href="#r2">Run-of-show 3 · Ideas to Concepts</a> — and read the drain section above first</td></tr>
+      <tr><td>Too many agreed ideas, no order</td><td><a href="#r3">Run-of-show 4 · Sequence the Work</a></td></tr>
+      <tr><td>No agreed direction at all</td><td><a href="#r5">Run-of-show 5 · Strategy Signal</a> — the two-year question, not this quarter's</td></tr>
+      <tr><td>A stuck team and a bad mood</td><td>Lightning Decision Jam, 60 minutes — module 1. Vote on the problems, leave with owners.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="expect">
+  <h2>Expectations</h2>
+  <p class="sec-intro">Readiness is your decision: is this session worth holding. Expectations are everyone else's: what they think they're walking into and what they'll judge the result against. Nearly every workshop described afterwards as &ldquo;great session, nothing happened&rdquo; passed the readiness gate and failed here. Nobody was told what the session would not do, so it got measured against a thing it was never going to produce.</p>
+
+  <h3 style="margin:26px 0 0">Four moments, and what gets said in each</h3>
+  <div class="tablebox" style="margin-top:12px"><table>
+    <thead><tr><th>When</th><th>Who</th><th>What has to be said out loud</th></tr></thead>
+    <tbody>
+      <tr><td><b>Two weeks out</b><br><span class="pg">the sponsor contract</span></td><td>You and the sponsor, in writing</td><td>What the session produces. <b style="font-weight:600">What it explicitly does not produce.</b> Who the Decider is. What you need from them beforehand — constraints, the prior art, the invite sent from their name not yours. What happens to the output and by when. One page. Get it back agreed before any invite goes out.</td></tr>
+      <tr><td><b>The invite</b></td><td>Participants</td><td>What it is, how long, where. Why <i>them specifically</i> — one line each, and write it, because people who know why they were picked arrive differently. What to bring. What will happen to what they say. No pre-read you're relying on.</td></tr>
+      <tr><td><b>First ten minutes</b><br><span class="pg">the frame</span></td><td>The room</td><td>What we're doing today. <b style="font-weight:600">What we're not doing today.</b> Who decides when we can't agree, by name, with their agreement in front of everyone. How long we have and what happens if we run over. Where this goes on Monday. Then start — not a round of introductions, a start.</td></tr>
+      <tr><td><b>Last ten minutes</b><br><span class="pg">the close</span></td><td>The room</td><td>What we produced. What we didn't get to and where it went. Who holds what, by name, said aloud, agreed in front of each other. When they'll hear back and from whom. Then a sentence about what the group actually did — people leave sessions genuinely unsure whether anything happened.</td></tr>
+      <tr><td><b>Same evening</b><br><span class="pg">the after-note</span></td><td>Everyone, plus the sponsor</td><td>Photos, the decision, the owners, the dates, the parked list. Two paragraphs, sent the same day. A workshop's output decays on a scale of hours; by Thursday the room remembers the mood and not the decision.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin:30px 0 0">Six expectations to lower on purpose</h3>
+  <p class="sec-intro" style="margin-top:6px">Rooms arrive carrying these whether or not anyone said them. Each one is cheap to defuse in the opening frame and expensive to discover at the close.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>What they assume</th><th>Say instead</th></tr></thead>
+    <tbody>
+      <tr><td>Everything raised today will get decided</td><td>&ldquo;We're deciding one thing today. Everything else goes on that sheet and I'll tell you where it went.&rdquo;</td></tr>
+      <tr><td>Consensus is the goal</td><td>&ldquo;We're not looking for agreement, we're looking for a decision. Pat decides. Your job is to make sure Pat decides with everything in front of them.&rdquo;</td></tr>
+      <tr><td>My idea will get built</td><td>&ldquo;Most of what we generate today won't get built, including most of mine. What we're protecting is that the thing that does get built was chosen against the right problem.&rdquo;</td></tr>
+      <tr><td>We'll leave with a design</td><td>&ldquo;Nothing we draw today is a design. It's a way of arguing about the same thing at the same time.&rdquo;</td></tr>
+      <tr><td>Attending means being consulted on everything downstream</td><td>&ldquo;Today's input is on the problem and the direction. The build decisions will not come back to this group, and I'd rather say that now than let you find out in March.&rdquo;</td></tr>
+      <tr><td>Silence means agreement</td><td>&ldquo;If you haven't said anything in twenty minutes I'm going to ask you directly, and that's not a trap.&rdquo;</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>The one sentence that does the most work.</b> &ldquo;Here is what we will not do today.&rdquo; It's absent from almost every workshop opening, it takes fifteen seconds, and it converts the most common post-workshop complaint into something that was agreed in advance by everyone in the room.</div>
+  <div class="warn" style="margin-top:14px"><b>The sponsor contract is the one to not skip.</b> The opening frame protects the session. The sponsor contract protects you. When a stakeholder says six weeks later that the workshop was supposed to produce a roadmap, the page you both agreed is the difference between a disagreement and a problem.</div>
+</section>
+
+<section id="rank">
+  <h2>Rank in the room</h2>
+  <p class="sec-intro">The Decider model assumes a room of near-peers who happen to need a tiebreaker. In a large organization it almost never is. The Decider is usually two or three levels above most of the room, and every mechanic in the method quietly stops working — not loudly enough to notice in the session, only afterwards when the output looks like what the senior person already thought. This is the largest gap between AJ&amp;Smart's rooms and yours, and none of the three source systems addresses it.</p>
+
+  <h3 style="margin:26px 0 0">What rank does to the mechanics</h3>
+  <div class="mech" style="margin-top:14px">
+    <div><b>It contaminates the vote.</b> A heat map in front of a senior Decider stops measuring what the room thinks and starts measuring what the room thinks the Decider thinks. The dots still cluster, so it still looks like it worked.</div>
+    <div><b>It contaminates generation.</b> A concept on the wall with a senior name on it wins before anyone reads it. Silent writing protects against anchoring, not against authorship.</div>
+    <div><b>It silences problem-naming.</b> The problems most worth hearing are usually the ones that implicate somebody senior who is sitting in the room. Nobody writes that note.</div>
+    <div><b>It turns participation into performance.</b> People stop trying to solve the thing and start trying to be seen solving the thing. These look identical for about an hour.</div>
+  </div>
+
+  <h3 style="margin:28px 0 0">Six fixes, cheapest first</h3>
+  <div class="fix">
+    <div><b>The Decider doesn't heat-map, and votes last.</b> AJ&amp;Smart already say this. It's the first rule dropped when the room is senior, which is precisely when it carries the weight.</div>
+    <div><b>Concepts go up unsigned.</b> You collect and transcribe them, or everyone uses the same marker and nobody writes a name. Authorship is the biggest single source of rank contamination and the cheapest one to remove.</div>
+    <div><b>The Decider speaks last in every round.</b> Agreed with them beforehand, said out loud at the open so the room can hold them to it. If the senior person speaks first, the round is over and the next forty minutes are theatre.</div>
+    <div><b>The Decider doesn't do the exercises.</b> They watch, they ask questions, they decide. A senior person's sticky notes aren't data, they're instructions wearing a sticky note.</div>
+    <div><b>Collect the problems before the session, anonymously.</b> If the real problem is that a program has no owner, nobody will write it with that owner in the room. Gather them by form a week out, de-duplicate, and put them up in your handwriting.</div>
+    <div><b>Two-tier Decider when the gap is more than two levels.</b> Delegate session authority to someone closer to the work, and brief the senior person before and after. Get the delegation in one written line in the sponsor contract &mdash; &ldquo;Dana decides in the room and I'll back it&rdquo; &mdash; because without it the delegation collapses the first time somebody appeals upward, and it will be appealed.</div>
+  </div>
+
+  <div class="note" style="margin-top:20px"><b>Name it out loud at the open.</b> &ldquo;Pat is more senior than most of us in this room. That's why Pat votes last and doesn't take part in the heat map.&rdquo; Ten seconds, and it tells the room the asymmetry was designed for rather than ignored &mdash; which is the difference between a rule that looks like deference and one that looks like method.</div>
+  <div class="warn" style="margin-top:14px"><b>The opposite failure.</b> A Decider too junior to make the decision stick is worse than a senior one, because the session produces a decision that gets quietly reversed and everyone learns the workshop didn't count. The test is one question: can this person say yes without going to ask someone? If not, they aren't the Decider &mdash; they're a participant, and you're missing gate 2.</div>
+</section>
+
+<section id="spine">
+  <h2>What goes on the wall</h2>
+  <p class="sec-intro">Most of these sessions hang off a spine &mdash; one visual the whole room works against. The spine is a design decision, not a default, and it determines the kind of feedback you get far more than the exercises do. A journey across touchpoints and a screen-by-screen flow produce different sessions from the same room on the same problem, and picking the wrong one is the quietest way to waste a morning.</p>
+  <div class="tablebox" style="margin-top:14px"><table>
+    <thead><tr><th>Spine</th><th>What it gets you</th><th>What it can't get you</th><th>Use it in</th></tr></thead>
+    <tbody>
+      <tr><td><b>Journey across touchpoints</b><br><span class="pg">Journey Map</span></td><td>Where ownership breaks, where the waits are, what happens between channels. The view nobody has, which is why it persuades.</td><td>Specifics. People react to an abstraction with abstractions &mdash; you'll get &ldquo;this step feels heavy&rdquo; and no requirement you could build from.</td><td><a href="#r4">1</a>, <a href="#r1">2</a></td></tr>
+      <tr><td><b>Screen-by-screen flow</b><br><span class="pg">outside the toolkit</span></td><td>Concrete reactions, edge cases, error states, the question nobody asked. People who can't answer &ldquo;what should the experience be&rdquo; will tell you exactly what's wrong with screen four.</td><td>Anything off-screen. The phone call, the branch visit, the three-day wait and the letter all vanish, and they're usually where the experience actually fails.</td><td><a href="#r9">9</a>, and as a variant of <a href="#r4">1</a></td></tr>
+      <tr><td><b>Blueprint lanes</b><br><span class="pg">Service Blueprint</span></td><td>Systems, teams, and the gaps between them made visible as holes you can point at.</td><td>A starting point. It needs a journey or a flow underneath it to hang off.</td><td><a href="#r4">1</a></td></tr>
+      <tr><td><b>Concepts or options</b><br><span class="pg">Concept Poster</span></td><td>Comparison and choice. The room argues about the same three things instead of nine.</td><td>Anything about sequence or handoffs.</td><td><a href="#r2">3</a>, <a href="#r8">8</a></td></tr>
+      <tr><td><b>Nothing on the wall yet</b></td><td>A room's own picture of the problem, unprimed by yours.</td><td>Speed. You'll spend the first forty minutes building the spine, and sometimes that's the session's whole value.</td><td><a href="#r7">7</a>, <a href="#r6">6</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>If you need requirements, put screens up.</b> Stakeholders who go vague on a journey map get specific in front of a flow, because reacting is easier than imagining and a screen gives them something to be wrong about. The whole of <a href="#r9">run-of-show 9</a> works better with a clickable flow as its spine than with a journey, even though the journey is the better document.</div>
+  <h3 style="margin:32px 0 0">Altitude</h3>
+  <p class="sec-intro" style="margin-top:6px">The zoom level you draw the journey at sets the zoom level of the ideas that come out of it. This is the most reliable rule in the book and the one least often used on purpose: <b>ideas arrive one rung below the altitude you drew</b>. Draw at task altitude and you get interaction fixes, every time, no matter how the ideation exercise is run. Rooms then conclude they aren't creative, when what happened is that they were handed a wall that could only produce small answers.</p>
+  <div class="tablebox" style="margin-top:12px"><table>
+    <thead><tr><th>Drawn at</th><th>Spans</th><th>Ideas you get</th><th>Decision it serves</th></tr></thead>
+    <tbody>
+      <tr><td><b>Relationship</b></td><td>Years. Becoming a client, growing, passing wealth on</td><td>Propositions, pricing, who you serve, what business you're in</td><td>Strategy. <a href="#r5">Run-of-show 5</a></td></tr>
+      <tr><td><b>Lifecycle stage</b></td><td>Months. Onboarding, first review, a life event</td><td>Service offers, programs, channel strategy, who owns the relationship</td><td>Portfolio and roadmap</td></tr>
+      <tr><td><b>Episode</b></td><td>Days to weeks. Opening an account, resolving a problem, moving money in</td><td>Handoffs, channel mix, what's automated, service recovery</td><td>Service design. The altitude <a href="#r4">run-of-show 1</a> is built for</td></tr>
+      <tr><td><b>Task</b></td><td>Minutes. One call, one session, one form</td><td>Flow, content, interaction, what's asked for and when</td><td>Product and flow design. <a href="#r9">Run-of-show 9</a></td></tr>
+      <tr><td><b>Moment</b></td><td>Seconds. One screen, one sentence, one hold message</td><td>Copy, control placement, error states</td><td>Craft and QA</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>Two rules that follow.</b> First: draw the journey one rung <i>above</i> the decision you need, because the ideas land a rung lower. If you need service-design decisions, map the episode, not the task. Second: never mix altitudes on one wall. A journey with &ldquo;decides to trust us with their money&rdquo; three cards along from &ldquo;clicks continue&rdquo; produces a room that argues for an hour while believing it agrees &mdash; and the sticky notes will sort themselves to the lowest rung on the wall, because that's the one everybody can be concrete about.</div>
+  <div class="warn" style="margin-top:14px"><b>The cost of screens.</b> Put real-looking screens on the wall and the room will react to the visual design &mdash; type, color, button placement &mdash; and not the flow, no matter what you asked for. Two fixes, use both: show them deliberately rough, and put up a separate sheet headed <i>visual notes</i> so those comments have somewhere to go. People aren't being difficult; they're commenting on the thing they can see, and if you give them nowhere to put it they'll keep saying it.</div>
+</section>
+
+<section id="handoff">
+  <h2>When a session doesn't flow</h2>
+  <p class="sec-intro">Your toolkit states the principle on its own process page: the output of a tool in one phase should generate the input of a tool in the next. It states it once and then never gives you a way to check it. So the most common way a well-planned session fails is that each activity ran fine on its own and the materials coming off one wall weren't what the next activity needed to pick up. Nobody can point at the moment it went wrong, because it didn't go wrong at a moment &mdash; it went wrong in a gap.</p>
+  <p class="sec-intro">That's why every step in all ten run-of-shows ends with a line saying what it hands the next one. Those aren't commentary. They're the thing to check when you compose a new session, and the thing to audit when an old one didn't work.</p>
+
+  <h3 style="margin:28px 0 0">The audit</h3>
+  <p class="sec-intro" style="margin-top:6px">Take the agenda. For every adjacent pair of activities, answer two questions in writing. If you can't name the artifact in a noun phrase &mdash; &ldquo;a ranked list of six problems,&rdquo; &ldquo;one agreed sentence,&rdquo; &ldquo;three posters with a metric each&rdquo; &mdash; the handoff was broken before the session started.</p>
+  <div class="gates">
+    <div class="gate"><span class="num">Question 1</span><h4>What physically comes off the wall at the end of A?</h4><p>Not what the room learned or felt. What exists: how many of what, in what form, at what altitude, chosen or unchosen.</p></div>
+    <div class="gate"><span class="num">Question 2</span><h4>Is that literally the thing B's first instruction tells people to pick up?</h4><p>Read B's opening sentence aloud. If it says &ldquo;take your top three problems&rdquo; and A produced forty unranked notes, B's first five minutes are a vote nobody budgeted for, and the session is now behind and improvising.</p></div>
+  </div>
+
+  <h3 style="margin:28px 0 0">The seven ways it breaks</h3>
+  <div class="tablebox" style="margin-top:12px"><table>
+    <thead><tr><th>A produced</th><th>B needed</th><th>What's missing between them</th></tr></thead>
+    <tbody>
+      <tr><td>Forty notes</td><td>Three things</td><td>A convergence step. Volume never becomes choice on its own, and a room asked to do both at once does neither. A heat map is five minutes.</td></tr>
+      <tr><td>Ideas at task altitude</td><td>Ideas at episode or strategy altitude</td><td>Nothing can fix this in the room. The spine was drawn at the wrong rung; see Altitude above.</td></tr>
+      <tr><td>Problems</td><td>Something to generate against</td><td>A reframe. A problem is argued with; a question gets answered. One How Might We card, three minutes.</td></tr>
+      <tr><td>A group artifact built by consensus</td><td>Individual positions to compare</td><td>A silent, individual step. Once a room has built one thing together, it will defend it rather than diverge from it.</td></tr>
+      <tr><td>Opinions</td><td>Evidence</td><td>Either research that hasn't happened, or an honest stop. That's <a href="#r8">run-of-show 8</a>.</td></tr>
+      <tr><td>A wall</td><td>A document somebody reads on Monday</td><td>A capture step with an owner. The output existed and then stopped existing, which from the project's side is identical to never having run the session.</td></tr>
+      <tr><td>A decision the room made</td><td>A decision that sticks</td><td>The Decider, or enough authority. See Rank in the room.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>Audit one you've already run, not the next one.</b> Take a session that didn't flow, write the agenda down the page, and put the two questions against every join. The broken handoff is almost always visible in the agenda alone &mdash; which means it was findable before the room arrived, with twenty minutes and this page.</div>
+</section>
+
+<section id="recipes">
+  <h2>The run-of-shows</h2>
+  <p class="sec-intro">Each is a complete session. The first four chain in the order you already work: Blueprint the Service surfaces the problems, Frame the Challenge turns them into a Problem Statement and a How Might We, Ideas to Concepts answers it, Sequence the Work orders what survives. Strategy Signal sits above all four and sets the direction they serve — run it when nobody can say where you're going in two years. One Owner is the odd one out, built for a room of one or two people who have never done this. Seven through ten are the ones you reach for when the chain is not what you need: a stuck team or a retro, an ideation that ended without enough information, a concept that has to become requirements, and the forty-five minutes that finds out how it fails.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>#</th><th>Run-of-show</th><th>Phases it uses</th><th>Leaves the room with</th><th>Time</th><th>People</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><a href="#r4"><b>Blueprint the Service</b></a></td><td><span class="ph discover">discover</span> <span class="ph prototype">prototype</span> <span class="ph test">test</span></td><td>Journey Map, Service Blueprint, pain points, future state, owners</td><td class="num">4h</td><td class="num">8–12</td></tr>
+      <tr><td class="num">2</td><td><a href="#r1"><b>Frame the Challenge</b></a></td><td><span class="ph discover">discover</span> <span class="ph analyze">analyze</span> <span class="ph frame">frame</span></td><td>Problem Statement, How Might We, goals and constraints</td><td class="num">2h 15m</td><td class="num">6–10</td></tr>
+      <tr><td class="num">3</td><td><a href="#r2"><b>Ideas to Concepts</b></a></td><td><span class="ph ideate">ideate</span> <span class="ph prototype">prototype</span> <span class="ph analyze">analyze</span></td><td>3–4 Concept Posters, screened for desirability, viability, feasibility</td><td class="num">3h</td><td class="num">5–8</td></tr>
+      <tr><td class="num">4</td><td><a href="#r3"><b>Sequence the Work</b></a></td><td><span class="ph analyze">analyze</span></td><td>A prioritized, sequenced plan with an owner per line</td><td class="num">2h</td><td class="num">5–8</td></tr>
+      <tr><td class="num">5</td><td><a href="#r5"><b>Strategy Signal</b></a></td><td><span class="ph frame">frame</span> <span class="ph ideate">ideate</span> <span class="ph analyze">analyze</span></td><td>A two-year goal, three metrics, 3–5 strategies, a roadmap with owners</td><td class="num">4h 25m<br>+ 2h 10m</td><td class="num">5–8</td></tr>
+      <tr><td class="num">6</td><td><a href="#r6"><b>One Owner, One Afternoon</b></a></td><td><span class="ph discover">discover</span> <span class="ph test">test</span> <span class="ph ideate">ideate</span></td><td>One handwritten page, three actions, one named for this week</td><td class="num">1h 30m</td><td class="num">1–3</td></tr>
+      <tr><td class="num">7</td><td><a href="#r7"><b>Lightning Decision Jam</b></a></td><td><span class="ph discover">discover</span> <span class="ph analyze">analyze</span> <span class="ph ideate">ideate</span></td><td>Ranked problems, prioritized solutions, actions with owners</td><td class="num">1h</td><td class="num">4–10</td></tr>
+      <tr><td class="num">8</td><td><a href="#r8"><b>What Do We Need to Know</b></a></td><td><span class="ph analyze">analyze</span> <span class="ph prototype">prototype</span></td><td>Ranked assumptions, who finds out what, and a date to decide anyway</td><td class="num">1h 15m</td><td class="num">5–8</td></tr>
+      <tr><td class="num">9</td><td><a href="#r9"><b>Requirements and Who Decides</b></a></td><td><span class="ph discover">discover</span> <span class="ph frame">frame</span> <span class="ph analyze">analyze</span></td><td>Requirements with acceptance criteria, plus decision requests for what you don’t own</td><td class="num">3h</td><td class="num">6–10</td></tr>
+      <tr><td class="num">10</td><td><a href="#r10"><b>What Will Kill This</b></a></td><td><span class="ph test">test</span> <span class="ph analyze">analyze</span></td><td>Two or three likely failures, the earliest signal for each, a name watching it</td><td class="num">45m</td><td class="num">5–10</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:14px"><b>Number 1 is the session you already run, and it’s first for a reason.</b> You use journeys to find the problems and then frame the challenges, so the chain starts where you start. The Journey Map step is your existing recipe; what follows it is the extension — three lanes under the map, unowned handoffs marked, every gap leaving with a name against it. The How Might We move you normally close with didn’t get cut, it got its own session as number 2, where it has an agreed problem statement feeding it instead of a wall of raw observations.<br><br>Which means you can skip the front of number 2 when you’ve come straight from number 1 — the research readout and Affinity Mapping steps are there for a cold start, and you won’t have one. Start at the Problem Statement.</div>
+</section>
+
+<div id="recipebody"></div>
+
+<section id="types">
+  <h2>Session types</h2>
+  <p class="sec-intro">Every workshop is doing one of a fairly small number of jobs. Naming the jobs is more useful than collecting formats, because it tells you when you’re about to run the wrong session — and it tells you what you’re still missing. Ten are written up here. Three more are named below and worth having.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>The job</th><th>Where it lives</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td><b>See the whole service at once</b><br><span class="pg">and find what nobody owns</span></td><td><a href="#r4">Run-of-show 1</a></td><td>Written</td></tr>
+      <tr><td><b>Agree what the problem is</b></td><td><a href="#r1">Run-of-show 2</a></td><td>Written</td></tr>
+      <tr><td><b>Generate and choose concepts</b></td><td><a href="#r2">Run-of-show 3</a></td><td>Written</td></tr>
+      <tr><td><b>Order the work</b></td><td><a href="#r3">Run-of-show 4</a></td><td>Written</td></tr>
+      <tr><td><b>Set a direction</b><br><span class="pg">two-year horizon, not this quarter</span></td><td><a href="#r5">Run-of-show 5</a></td><td>Written</td></tr>
+      <tr><td><b>Work with someone who has never done this</b></td><td><a href="#r6">Run-of-show 6</a></td><td>Written</td></tr>
+      <tr><td><b>Unblock a stuck team, or run a retro</b></td><td><a href="#r7">Run-of-show 7</a></td><td>Written</td></tr>
+      <tr><td><b>Go and find out before choosing</b><br><span class="pg">ideation ended without enough information</span></td><td><a href="#r8">Run-of-show 8</a></td><td>Written</td></tr>
+      <tr><td><b>Turn a concept into requirements</b><br><span class="pg">and split what you decide from what Risk, Legal or Security decides</span></td><td><a href="#r9">Run-of-show 9</a></td><td>Written</td></tr>
+      <tr><td><b>Get people to react to something concrete</b><br><span class="pg">screens on the wall, not a journey</span></td><td>A spine choice rather than a session type — see <a href="#spine">What goes on the wall</a>, and <a href="#r9">run-of-show 9</a></td><td>Covered</td></tr>
+      <tr><td><b>Make sense of research</b><br><span class="pg">a pile of interviews, no shared conclusion</span></td><td>The front half of <a href="#r4">run-of-show 1</a></td><td>Partial. Worth its own session, because the job comes up on its own more often than it comes up inside a blueprint</td></tr>
+      <tr><td><b>Find what will kill it</b><br><span class="pg">pre-mortem</span></td><td><a href="#r10">Run-of-show 10</a></td><td>Written</td></tr>
+      <tr><td><b>Critique work in progress</b></td><td>Nowhere</td><td>Missing. The job you do most often and have the least structure for</td></tr>
+      <tr><td><b>Start a project together</b><br><span class="pg">kickoff: scope, roles, what done means</span></td><td>Nowhere</td><td>Missing</td></tr>
+      <tr><td><b>Define what success means</b></td><td>One step inside <a href="#r5">run-of-show 5</a></td><td>Partial</td></tr>
+      <tr><td><b>Teach the method to someone else</b></td><td><a href="#teach">Teach it</a></td><td>Written</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tablebox" style="margin-top:0"><table>
+    <thead><tr><th>Still missing</th><th>Why it's worth having</th></tr></thead>
+    <tbody>
+      <tr><td><b>Critique</b><br><span class="pg">structured feedback on work in progress</span></td><td>The job your team does weekly with no format at all, which means it’s currently run by whoever speaks first and loudest. Highest frequency, lowest structure. The one I’d write next.</td></tr>
+      <tr><td><b>Role and handoff clarification</b><br><span class="pg">who owns what, actually</span></td><td>Sits one layer under half the problems run-of-show 1 surfaces. You already have the RACI habit from the Forkin process; this would be that, as a session.</td></tr>
+      <tr><td><b>Kickoff</b><br><span class="pg">scope, roles, what done means</span></td><td>Lowest skill, highest politics, and most likely to already be somebody else's meeting that you'd be taking over.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>What's genuinely not here.</b> Beyond those three, the set of jobs is close to complete — ten written, three named. What's left out on purpose: a pure decision meeting, which is thirty minutes and doesn't need a run-of-show; measurement definition, which lives inside <a href="#r5">run-of-show 5</a> rather than standing alone; and anything that's really a program rather than a session, which is module 5's territory.</div>
+
+  <h3 style="margin:32px 0 0">What changes for a room that has never done this</h3>
+  <p class="sec-intro" style="margin-top:6px">You asked whether a session for small business owners is the same thing. The exercises mostly survive. The room doesn't, and almost everything that makes a workshop feel like a workshop is machinery for problems a one-owner room doesn't have.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th></th><th>A stakeholder room</th><th>An owner who has never done this</th></tr></thead>
+    <tbody>
+      <tr><td><b>What's hard</b></td><td>Getting a group that disagrees to commit to one thing</td><td>Getting one person who knows everything about their business to see it from outside</td></tr>
+      <tr><td><b>Voting</b></td><td>Essential. It's how you get a decision without the loudest person making it</td><td>Pointless. They're the Decider, the expert and the builder. Ask them which one costs most and write down the answer</td></tr>
+      <tr><td><b>Silent writing</b></td><td>The core move — it stops anchoring and gets quiet people's ideas on the wall</td><td>Strange with two people. Keep the sketching, drop the silence</td></tr>
+      <tr><td><b>The prior-art problem</b></td><td>They don't know what's been tried internally. Fix it with the explored-territory brief</td><td>Inverted. They know their own business completely and the outside world barely at all. Examples from elsewhere <i>are</i> the session's value</td></tr>
+      <tr><td><b>Pre-work</b></td><td>Often doesn't happen. Budget time in the room</td><td>Will not happen. Assume zero, and carry the research burden yourself</td></tr>
+      <tr><td><b>Vocabulary</b></td><td>&ldquo;How Might We&rdquo; and &ldquo;journey map&rdquo; are shared currency</td><td>They sound like consulting, and consulting sounds like an invoice. Run the same tools, say none of the names</td></tr>
+      <tr><td><b>Length</b></td><td>Half a day is normal</td><td>Ninety minutes, once. A weekday afternoon is revenue they're giving you</td></tr>
+      <tr><td><b>Neutrality</b></td><td>Non-negotiable. You hold the process, they hold the content</td><td>Partly suspended. You're expected to bring content — the five prepared examples — and refusing to looks like withholding</td></tr>
+      <tr><td><b>Output</b></td><td>A roadmap for a team to execute</td><td>One page in their handwriting, three things, doable alone, by Friday</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note" style="margin-top:16px"><b>The transferable lesson.</b> Facilitating a room of one strips out everything that exists to manage a group and leaves only the part that's about helping someone see their own situation from outside it. That part is the actual skill. It's worth running one of these on purpose even if small business owners are never your day job — it shows you which of your habits are facilitation and which are crowd control.</div>
+</section>
+
+<section id="tools">
+  <h2>Tool index</h2>
+  <p class="sec-intro">Every tool the run-of-shows use, by phase. These are the common ones — you will find a version of each in any design thinking toolkit, under roughly this name. Run-of-show 5 is almost absent from this index on purpose: only two of its eleven steps use a toolkit tool at all, which is the clearest measure of the gap it fills. Swapping a tool for another in the same phase keeps the run-of-show intact, and that is what makes these composable. The teaching note is what goes wrong when you hand the tool to someone else.</p>
+  <div id="toolbody"></div>
+  <div class="note" style="margin-top:20px"><b>Tools these run-of-shows don’t use yet.</b> Every toolkit carries more than any one session needs — competitive analysis, empathy maps, personas, business model canvases, heuristic reviews, role play. Worth knowing when you <a href="#compose">build your own</a>. If you don’t have a library to pull from, the <a href="https://www.thisisservicedesigndoing.com/methods">54 free method pages</a> at This Is Service Design Doing and the <a href="https://www.liberatingstructures.com/">33 Liberating Structures</a> are both complete enough to work from.</div>
+</section>
+
+<section id="compose">
+  <h2>Build your own</h2>
+  <p class="sec-intro">This is the toolkit's own "Using the toolkit" method, steps 1 through 7, with the facilitation layer it leaves out added as steps 8 through 10. Do the first seven before you touch a calendar invite.</p>
+  <ol class="method">
+    <li><b>Identify the problem.</b><span>Write a Problem Statement. It guides every phase after this, so the time spent here comes back. If you can't write it yet, that's what run-of-show 1 is for.</span></li>
+    <li><b>Define the opportunity.</b><span>Respond to the Problem Statement with a How Might We. Get stakeholder alignment on both before you go further — the toolkit is emphatic about this and it's the step people skip.</span></li>
+    <li><b>Specify your goals.</b><span>What do you want out of the process? Attach a number where you can, so you can tell afterwards whether you got it. Importance vs. Difficulty or the Innovation Ambition Matrix will rank them if stakeholders disagree.</span></li>
+    <li><b>Consider your constraints.</b><span>Time, money, what's already been researched, brand standards, anything that makes a plan unexecutable. Revisit these as you go and update them when they change.</span></li>
+    <li><b>Choose your phases.</b><span>You do not have to use every phase. Goals and constraints will tell you to shorten one or skip it. Starting at analyze because research already exists is a legitimate opening, not a shortcut.</span></li>
+    <li><b>Select your tools.</b><span>One tool per slot. The rule that makes a session work: <b>the output of a tool in one phase should generate the input of a tool in the next.</b> If it doesn't, you have two activities rather than a sequence.</span></li>
+    <li><b>Detail your deliverables.</b><span>Write down what each tool will produce. If a tool's deliverable doesn't move you closer to a solution, stop and rethink the approach rather than running it anyway.</span></li>
+    <li><b>Write the handoff between each pair out loud.</b><span>Finish the sentence "step A hands step B ___". This is step 6 made concrete, and it's the fastest way to find the missing step in a draft agenda.</span></li>
+    <li><b>Add the fixed furniture.</b><span>Ten minutes to open and frame. A break every ninety minutes. Fifteen to twenty minutes to commit with owners and dates. Not optional, and not where you save time.</span></li>
+    <li><b>Total the times, add 20%, then cut a tool.</b><span>Every first draft is too full. The version you run should look slightly too short on paper. It won't be. And write the Decider's name on the agenda before the session, not during it.</span></li>
+  </ol>
+  <h3 style="margin-top:30px">Blank outline</h3>
+  <p class="sec-intro">Fill this in and you have a run-of-show. It's the toolkit's outline with two columns added.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>Phase</th><th>Tool &amp; page</th><th>Deliverable</th><th>Time</th><th>Hands the next step…</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ph brk">open</span></td><td>Frame, Decider, rules</td><td>A room that knows what done looks like</td><td class="num">10m</td><td>Permission to move fast</td></tr>
+      <tr><td><span class="ph discover">discover</span></td><td class="mono">?</td><td class="mono">?</td><td class="num">?</td><td class="mono">?</td></tr>
+      <tr><td><span class="ph analyze">analyze</span></td><td class="mono">?</td><td class="mono">?</td><td class="num">?</td><td class="mono">?</td></tr>
+      <tr><td><span class="ph ideate">ideate</span></td><td class="mono">?</td><td class="mono">?</td><td class="num">?</td><td class="mono">?</td></tr>
+      <tr><td><span class="ph brk">commit</span></td><td>Owners, dates, Decider sign-off</td><td>Work that survives the week</td><td class="num">15m</td><td>The next session's starting point</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn" style="margin-top:16px"><b>The failure mode.</b> A session that discovers and ideates but never analyzes or commits feels great in the room and produces nothing. If you're short on time, cut an ideate tool, never the commit.</div>
+</section>
+
+<section id="teach">
+  <h2>Teach it</h2>
+  <p class="sec-intro">How to hand a tool or a whole run-of-show to someone else. Most of this is instruction-giving, because that's where new facilitators lose a room — not in the design.</p>
+  <div class="grid">
+    <div class="card"><h3>What · Why · How</h3><p>Explain every tool in that order, every time. <b>What</b> we're about to do, <b>why</b> it helps us, <b>how</b> it works step by step. People who hear "how" before "why" spend the activity wondering what the point is.</p></div>
+    <div class="card"><h3>Say it three times</h3><p>Anything important, three times, three different ways. You've heard your own instructions dozens of times. The room is hearing them once, while thinking about something else.</p></div>
+    <div class="card"><h3>One way only</h3><p>Show a single way to run the tool. Options feel generous and land as confusion. Offer an alternative only if somebody asks.</p></div>
+    <div class="card"><h3>Show, don't tell</h3><p>Point at a filled-in canvas before anyone starts. The toolkit prints an example on most tool pages — use it rather than describing the output in the abstract.</p></div>
+    <div class="card"><h3>Close with the insight</h3><p>After the detail, one sentence of why: "The big idea is that we vote before we discuss, so the quiet ideas survive." That's what people remember and repeat.</p></div>
+    <div class="card"><h3>Park, don't block</h3><p>When someone raises something real but off-topic, write it on the parking lot out loud, then actually return to it. The visible note is what lets them let go of it.</p></div>
+  </div>
+
+  <h3 style="margin-top:30px">Teaching ladder</h3>
+  <p class="sec-intro">Don't start a teammate on a whole session. Four steps, each a real session with real stakes, getting bigger.</p>
+  <div class="tablebox"><table>
+    <thead><tr><th>Step</th><th>They do</th><th>You do</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Shadow</b></td><td>Sit in a session you facilitate with the run-of-show in hand, noting every moment they'd have been unsure.</td><td>Debrief their list afterwards. That list is their curriculum.</td></tr>
+      <tr><td><b>2 · Run one tool</b></td><td>Facilitate a single tool inside your session — Visualize the Vote or 6-to-1 Ideation first, because the instructions are short and the output is obviously right.</td><td>Hand the room over explicitly and take it back explicitly. Don't rescue them mid-tool.</td></tr>
+      <tr><td><b>3 · Run a short session</b></td><td>Facilitate a whole 60–90 minute session with a friendly group on a low-stakes topic.</td><td>Be in the room as a participant, not a co-facilitator. Give feedback on one thing, not five.</td></tr>
+      <tr><td><b>4 · Co-facilitate a real one</b></td><td>Split a half-day run-of-show with you, each taking whole phases.</td><td>Take the phases they're least ready for, and tell them which those are and why.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:30px">Teach these five first</h3>
+  <div class="tablebox"><table>
+    <thead><tr><th>Tool</th><th>Why it's first</th></tr></thead>
+    <tbody>
+      <tr><td><b>Visualize the Vote</b></td><td>Thirty seconds of instruction and an unambiguous output. Builds their confidence that structure works.</td></tr>
+      <tr><td><b>6-to-1 Ideation</b></td><td>Pure timekeeping. Teaches them that the timer is the authority in the room, not them.</td></tr>
+      <tr><td><b>How Might We</b></td><td>The first one needing judgement — telling a good question from a solution in disguise. Teach it with examples, not rules.</td></tr>
+      <tr><td><b>Importance vs. Difficulty</b></td><td>Teaches the hardest facilitation skill: cutting off a discussion kindly. The twenty-second rule gives them a script for it.</td></tr>
+      <tr><td><b>Affinity Mapping</b></td><td>Teaches reading a room's language back to it without editorializing. Good practice for neutrality.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="sources">
+  <h2>Where all of this comes from</h2>
+  <p class="sec-intro">The tools are standard design thinking; the facilitation layer is not, and it is the part that took reading. Where a step uses something that won't be in your toolkit, it's marked <span class="outside">outside</span> in the run-of-show, so you know to go to the source rather than hunt for a canvas. Where a step is mine and has no source at all, it's marked <span class="mine">not from a source</span>. Credit per session sits at the foot of each run-of-show.</p>
+  <div class="grid">
+    <div class="card"><h3>AJ&amp;Smart / Facilitator.com</h3><p>The facilitation layer: the Decider role, "work together alone", the heat map / straw poll / Decider vote sequence, the twenty-second rule on Importance vs. Difficulty, What·Why·How and saying things three times.</p><p style="margin-top:7px">Their guidebook, LDJ booklet and Strategy Signal PDF, plus <a href="https://www.youtube.com/@ajsmart">@ajsmart</a>. The <a href="https://www.youtube.com/watch?v=0iVQYHHCTf0">remote decision-jam demo</a> is 19 minutes and shows the whole voting mechanic with real participants.</p></div>
+    <div class="card"><h3>This Is Service Design Doing</h3><p>Fuller instructions for Journey Map and Service Blueprint than the toolkit has room for, plus co-creation with customers and the facilitation theory underneath all of this — consent, status, neutrality, safe space.</p><p style="margin-top:7px">54 free method pages at <a href="https://www.thisisservicedesigndoing.com/methods">thisisservicedesigndoing.com/methods</a>; chapter 10 of the book for facilitation.</p></div>
+    <div class="card"><h3>Gary Klein — the pre-mortem</h3><p>Run-of-show 10 is his, from <i>Performing a Project Premortem</i> in Harvard Business Review, September 2007 — two pages, and the whole method is in them. The past tense is the finding, not a flourish: the prospective-hindsight research he cites found that people asked to explain an outcome that has already happened produce substantially more reasons than people asked to predict one.</p><p style="margin-top:7px">Read it before you run it. It is short enough that handing it to a sponsor is a reasonable thing to do.</p></div>
+    <div class="card"><h3>Liberating Structures</h3><p>TRIZ, the destructive variant on run-of-show 10 — design the disaster on purpose, then find what you are already doing that resembles it. Also worth knowing for 1-2-4-All and 25/10 Crowd Sourcing, which are the cheapest ways to make a large room produce something.</p><p style="margin-top:7px">All 33 structures free at <a href="https://www.liberatingstructures.com/">liberatingstructures.com</a>.</p></div>
+    <div class="card"><h3>Workshopr.io</h3><p>The commitment round, and 12 more scripted sessions in this same shape if you want more reps — free, no sign-in, at <a href="https://www.workshopr.io/library/recipes/">workshopr.io/library/recipes</a>.</p></div>
+  </div>
+  <div class="warn" style="margin-top:18px"><b>If you’re building an accreditation portfolio.</b> Run-of-show 1, Blueprint the Service, is the one that maps to the Service Design Network competency on planning and facilitating co-creation sessions with appropriate visualization tools. Run it with real customers or frontline staff in the room, not just the project team, if you want it to count as evidence.</div>
+</section>
+
+<footer>Run-of-Show Book · by Stacey Layne Martin, service designer. Ten workshops written out minute by minute, built on standard design thinking tools (frame, discover, analyze, ideate, prototype, test) with a facilitation layer drawn from AJ&amp;Smart, This Is Service Design Doing, Workshopr.io, Gary Klein and Liberating Structures. Sources checked Nov 19, 2026. Use it, adapt it, run it — credit the sources, not me.</footer>
+</div>
+
+<script>
+const PH={frame:"frame",discover:"discover",analyze:"analyze",ideate:"ideate",prototype:"prototype",test:"test",brk:"break",open:"open"};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+const RECIPES=[
+{id:"r4",n:1,title:"Blueprint the Service",time:"4h",people:"8–12",phases:["discover","prototype","test"],
+ purpose:"See a whole service at once — what the customer does, what staff do, what systems do — and find the pain points nobody owns.",
+ facts:[
+  ["Run it when","The experience breaks at handoffs, nobody can say who owns a step, or two teams each think the other has it. This is your existing journey session — the first half is what you already do."],
+  ["Who's in the room","The one to run with actual customers or frontline staff, not just the project team. Mixed room, 8 to 12. This is also the SDN co-creation evidence session."],
+  ["Leaves the room with","A Journey Map, a Service Blueprint, a marked pain point list, a future-state stretch and an owner per gap."],
+  ["What to print","Journey Map, Service Blueprint, Pain Point Identification, Current State / Future State."],
+  ["The screen-flow variant","When the room needs to be concrete rather than comprehensive, run the same session with a screen-by-screen flow as the spine instead of a journey. You lose everything that happens off-screen \u2014 the call, the wait, the letter \u2014 so only swap it when those aren\u2019t where the problem is. See What goes on the wall."]],
+ steps:[
+  {t:"0:00",d:"20m",ph:"open",name:"Warm up and fix the scope",
+   how:"A short warm-up, then name the one journey you're mapping and its exact start and end point. Say them aloud and write them where they stay visible all session.",
+   say:"We're mapping what happens today, not what should happen. Hold the fixes — there's a slot for them after the break.",
+   ho:"A fixed scope. Most blueprint sessions fail because the start and end quietly moved at the ninety-minute mark."},
+  {t:"0:20",d:"40m",ph:"discover",name:"Journey Map",
+   how:"One actor, left to right. Stages across the top, steps underneath, one step per note. Then two rows below: what the customer is trying to do at each step, and how they feel.",
+   say:"Is that what happens, or what we wish happened? Keep asking yourself. We want today's version, warts included.",
+   ho:"The step row, which becomes the spine every blueprint lane hangs off."},
+  {t:"1:00",d:"50m",ph:"prototype",name:"Service Blueprint",
+   how:"Under each journey step add three lanes: frontstage (what the customer can see staff or the interface doing), backstage (what happens they can't see), and systems (which system or team carries it). Work one lane across all steps, not one step down all lanes.",
+   say:"Lane by lane is faster, and it makes the holes show up as vertical gaps you can point at.",
+   ho:"A map where a missing piece is visible as a hole — far more persuasive to a stakeholder than a complaint."},
+  {t:"1:50",d:"15m",ph:"brk",name:"Break"},
+  {t:"2:05",d:"25m",ph:"test",name:"Pain Point Identification",
+   how:"Red dots on every step where the handoff is unowned, the system is unknown, or two lanes contradict each other. Then each person marks the three they believe cost the most.",
+   say:"A gap isn't a failure, it's something nobody was ever given. Mark the step, never the person.",
+   ho:"A map turned into a shortlist."},
+  {t:"2:30",d:"20m",ph:"test",name:"Pick the decisive moments",outside:true,
+   how:"From the marked pain points, the room picks the steps where the relationship is actually won or lost. Three maximum. Vote, then the Decider confirms.",
+   say:"Not the most annoying steps — the steps where a customer decides whether to stay with us.",
+   ho:"Focus on the few steps that change the outcome, instead of a future state that tries to fix everything."},
+  {t:"2:50",d:"45m",ph:"discover",name:"Current State, Future State",
+   how:"Re-map only the stretch around the decisive moments, using the same three lanes. Pairs draft their version, then the room merges them into one.",
+   say:"Same lanes, same discipline. If a future step has no system behind it, that's a question for after the session, not a blank we skip past.",
+   ho:"A future state anchored to specific current-state pain points, so it reads as a fix rather than a wish list."},
+  {t:"3:35",d:"20m",ph:"prototype",name:"Commit the gaps",outside:true,
+   how:"Each gap going forward gets an owner. The owner writes \"I will ___ by ___\" on a card, reads it aloud, and sticks it on the gap. Only owners speak during this round.",
+   say:"If a gap has no owner, I'm writing that on the wall too. It leaves here as an open item, not a quiet one.",
+   ho:"Named commitments against a visual map — the artifact that makes the next conversation easy."}],
+ credit:"Journey Map, Service Blueprint, Pain Point Identification and Current State / Future State are standard design thinking tools. This Is Service Design Doing has fuller instructions for the blueprint lanes and for running it as co-creation with customers. The commitment round is Workshopr's."},
+
+{id:"r1",n:2,title:"Frame the Challenge",time:"2h 15m",people:"6–10",phases:["discover","analyze","frame"],
+ purpose:"Produce the Problem Statement and How Might We that the toolkit tells you to start with — when the room doesn't yet agree on what the problem is.",
+ facts:[
+  ["Run it when","Three people have three different ideas of the problem, or a brief arrived vague and someone is already proposing solutions."],
+  ["Leaves the room with","A Problem Statement, a How Might We, ranked goals and a named constraint list."],
+  ["What to print","Affinity Mapping, Problem Statement, How Might We. Expert Interview belongs to the design work that happens before this session, not inside it \u2014 bring its output in as a readout."],
+  ["Note on order","This runs discover → analyze → frame, not frame first. That's the toolkit's own non-linear permission: you can't write the Problem Statement until you've heard the problem."]],
+ steps:[
+  {t:"0:00",d:"10m",ph:"open",name:"Open and frame the session",
+   how:"Say what the room will leave with and point at the three parts on the wall. Name the Decider out loud. Give three rules: we write in silence before we talk, we vote instead of debating, and the Decider breaks ties.",
+   say:"By the end we'll have one Problem Statement everyone here agrees with, and one How Might We. Not solutions — we're defining the space we'll search in later.",
+   ho:"A room that knows what finished looks like, so nobody renegotiates scope at the ninety-minute mark."},
+  {t:"0:10",d:"40m",ph:"discover",name:"Bring the research in",
+   how:"The normal case: the interviews already happened, outside this session, as part of the design process. So this slot is a readout — fifteen minutes walking the room through what you already heard, verbatim quotes where you have them, then twenty-five minutes of everyone writing problems silently, one per note, as observations rather than solutions. Live Expert Interview is the variant: four experts, eight minutes each, questions only in the last minute of each slot. It needs scheduling weeks out and roughly doubles your planning time, so run it when teaching is the point \u2014 watching problems get harvested in real time is the single best hour for someone who has never seen it done.",
+   say:"These are their words, not my summary. You're not listening for the answer, you're harvesting problems. One per note. If you catch yourself writing a fix, flip it back into the problem it solves.",
+   ho:"A wall of problems in the experts' language rather than the team's assumptions about them."},
+  {t:"0:50",d:"25m",ph:"analyze",name:"Affinity Mapping",
+   how:"Everyone posts at once, in silence. Then read notes aloud one at a time; the room answers only \"same\" or \"new\". Same joins a stack, new starts a column. Name the columns at the end, never at the start.",
+   say:"Don't name the groups yet. If we name them first we spend ten minutes forcing notes into piles that don't fit.",
+   ho:"Duplicates collapsed into visible weight, so the vote measures agreement rather than who wrote the most notes."},
+  {t:"1:15",d:"10m",ph:"test",name:"Visualize the Vote",outside:false,
+   how:"Unlimited dots, five minutes, no talking. Vote on individual notes, not on column headings. Then rearrange into one ranked column and drop anything with a single dot.",
+   say:"Vote for what you think matters most, not what you think the room wants. Nobody is counting whose dot is whose.",
+   ho:"A shortlist of three to five problems, with the top one clear enough to write a statement about."},
+  {t:"1:25",d:"25m",ph:"frame",name:"Problem Statement",
+   how:"In trios, each writes one statement from the top-voted cluster. Keep it about the people who have the problem and what it costs them — no solutions inside the sentence. Post every draft, everyone stars the truest one, read it aloud and take at most three edits from the room. Write the winner at the top of the wall.",
+   say:"Write the problem as something that's happening to someone, and what it costs. If a solution has crept into your sentence, cut it out.",
+   eg:"\"Visitors reach the pricing page and leave without starting a trial, because they can't tell what happens after they click. This drives trial starts below target and makes paid acquisition more expensive.\"",
+   ho:"The statement that every later phase, document and decision points back to."},
+  {t:"1:50",d:"15m",ph:"frame",name:"How Might We…?",
+   how:"Everyone writes three questions responding to the Problem Statement, one per note. Show a finished example first. A good one is narrower than \"make it better\" and wider than a solution in disguise. Post, stack duplicates, one dot each, winner goes forward.",
+   say:"This defines the space we'll search for solutions in. Too wide and we'll wander; too narrow and we've already decided the answer.",
+   eg:"\"How might we make the next step more obvious than the way out?\"",
+   ho:"The opportunity framed as an answerable question — the only input an ideate session can actually use."},
+  {t:"2:05",d:"10m",ph:"frame",name:"Goals and constraints",outside:true,
+   how:"Two columns. Everyone writes the measurable goals this work has to hit and the constraints that could make a plan unexecutable — time, budget, research already done, brand standards, regulatory. The Decider marks which constraints are hard.",
+   say:"What would have to be true for this to work, and what can't we change? Write the ones you're not sure about too — those are the questions we take away.",
+   ho:"Steps 3 and 4 of the toolkit's outline method, done while everyone is still in the room. This is what lets you choose phases afterwards."}],
+ credit:"Expert Interview, Affinity Mapping, Visualize the Vote, Problem Statement and How Might We are all standard design thinking tools. The Decider role, the silent-then-vote mechanic and the trio drafting pattern come from AJ&Smart. Treating the expert interviews as prior design work and this slot as a readout is my correction to the run-of-show, not a change to the tool itself."},
+
+{id:"r2",n:3,title:"Ideas to Concepts",time:"3h",people:"5–8",phases:["ideate","prototype","analyze"],
+ purpose:"Get from a How Might We to three or four Concept Posters the room will defend — screened against desirability, viability and feasibility before anyone falls in love.",
+ facts:[
+  ["Run it when","You have a framed opportunity and need real options. Also when one idea has quietly become the plan and nobody has compared it to anything."],
+  ["Leaves the room with","Three to four Concept Posters, each with an If/Then hypothesis and a D.V.F. read."],
+  ["Needs first","A Problem Statement and How Might We. Run run-of-show 1 if you don't have them."],
+  ["What to print","Precursors & Analogs, 6-to-1 Ideation, If Then Statements, Concept Poster, D.V.F. Framework."]],
+ steps:[
+  {t:"0:00",d:"15m",ph:"open",name:"Open and show the target",
+   how:"Put the Problem Statement and How Might We on the wall. Then show the Concept Poster template now, at the start, so people ideate toward the shape they'll have to fill.",
+   say:"Everything today points at this one question. If an idea doesn't answer it, it isn't wrong, it's just not today — it goes on the parking lot.",
+   ho:"People generating against a known output format, which is most of why the concepts come out comparable."},
+  {t:"0:15",d:"25m",ph:"ideate",name:"Precursors & Analogs",
+   how:"Fifteen minutes of silent research — any industry, any company, three examples each. Then two minutes per person: the name, the big idea, why it's interesting, and one takeaway sketched on the wall. No discussion between presentations.",
+   say:"We're after the mechanism, not the product. The useful ones usually come from outside our own industry, so start there.",
+   ho:"A wall of concrete mechanisms. This is what stops the next step producing vague ideas — people build from something they can see."},
+  {t:"0:40",d:"20m",ph:"ideate",name:"6-to-1 Ideation",
+   how:"Silent generation against the How Might We, working down to each person's single strongest idea. Post all the finalists at random, then everyone dots the ones worth developing.",
+   say:"Quantity first, judgement second. Nobody is presenting these, so half-baked is fine — the writing has to carry it.",
+   ho:"A shortlist nobody had to defend out loud, so the quiet people's ideas are still alive at this point."},
+  {t:"1:00",d:"10m",ph:"brk",name:"Break"},
+  {t:"1:10",d:"45m",ph:"prototype",name:"Concept Poster",
+   how:"Pairs. Each pair fills one Concept Poster, pulling from the shortlist and the analogs wall rather than a blank page. Write the hypothesis as an If/Then Statement: if we do this, then that will change.",
+   say:"Make it tangible enough that someone who missed today could read it and know what we'd build. Drawing ability is irrelevant — boxes and arrows are fine.",
+   ho:"Ideas turned into comparable objects — same shape, same length — so the choice is about substance instead of who presents well."},
+  {t:"1:55",d:"15m",ph:"test",name:"Visualize the Vote",
+   how:"Silent gallery walk, unlimited dots. Dots go on the specific lines people find compelling, not on whole posters.",
+   say:"Mark the parts you'd want in the final thing, wherever they are. You're allowed to like two lines from concepts that contradict each other.",
+   ho:"Shows which mechanisms the room wants, which usually cut across posters and reshape what gets picked."},
+  {t:"2:10",d:"20m",ph:"analyze",name:"D.V.F. Framework",
+   how:"Take the top three or four posters through desirable, viable, feasible. One pass per lens, scoring high / medium / low with a one-line reason. Anything low on all three comes off the wall now rather than in six weeks.",
+   say:"Desirable is the user's answer, viable is the business's, feasible is ours. A concept needs all three eventually — today we just need to know which one it's weakest on.",
+   ho:"A screened set, and a named weakness per concept that becomes the first thing to test."},
+  {t:"2:30",d:"15m",ph:"analyze",name:"Decider vote",outside:true,
+   how:"The Decider picks three or four and says why in one sentence each. Everything not picked goes to a named backlog on the wall, not in the bin.",
+   say:"Votes were advice. This is the decision, and we're not reopening it next week. Anything we didn't pick is written down where we can find it.",
+   ho:"A decision with a stated rationale, which is what keeps the question from reopening at the next standup."}],
+ credit:"Precursors & Analogs, 6-to-1 Ideation, If Then Statements, Concept Poster, D.V.F. Framework and Visualize the Vote are standard design thinking tools. The Decider vote and the pair-drafting pattern are AJ&Smart's."},
+
+{id:"r3",n:4,title:"Sequence the Work",time:"2h",people:"5–8",phases:["analyze"],
+ purpose:"Turn a pile of agreed work into a sequenced plan with an owner on every line and a date for the first check-in.",
+ facts:[
+  ["Run it when","Everyone agrees what matters and nobody agrees what's first. Also when a roadmap exists on paper but nothing on it has an owner."],
+  ["Leaves the room with","An Importance vs. Difficulty map, a four-bucket timeline, and an owner plus check-in date per item."],
+  ["Needs first","A set of chosen concepts or initiatives. Run-of-show 2 produces them; so does any decision made elsewhere."],
+  ["What to print","Importance vs. Difficulty Matrix. Swap in the Innovation Ambition Matrix when the question is portfolio balance rather than sequence."]],
+ steps:[
+  {t:"0:00",d:"10m",ph:"open",name:"Lay the items out",
+   how:"One item per card on the wall. Read each aloud. No discussion — this only checks that everyone reads each card the same way.",
+   say:"Stop me if a card means something different to you than what I just said. That's the only thing we're checking right now.",
+   ho:"A shared reading of every item, so the sequencing argument isn't secretly an argument about definitions."},
+  {t:"0:10",d:"30m",ph:"analyze",name:"Importance vs. Difficulty Matrix",
+   how:"Draw the two axes and quarter the box. Take the top item, hold it over the center, and ask only \"is the importance higher or lower?\" Move it until the room settles, then the same for difficulty. Repeat for each item.",
+   say:"Approximate is fine — the quadrant matters, the exact spot doesn't. If a discussion runs past twenty seconds I'm going to place it and move on.",
+   ho:"The high-importance, low-difficulty corner becomes visible before anyone talks about dates, so sequencing argues from difficulty rather than enthusiasm."},
+  {t:"0:40",d:"10m",ph:"analyze",name:"Draw the buckets",outside:true,
+   how:"A horizontal timeline with four loose buckets: next 3 months, next 6, 9 to 12, and 12 plus. Rough on purpose — no month-by-month planning.",
+   say:"We're not setting dates today. We're deciding roughly when each of these starts.",
+   ho:"A frame coarse enough that people will actually commit to it."},
+  {t:"0:50",d:"30m",ph:"analyze",name:"Place items and draw dependencies",outside:true,
+   how:"One at a time: \"When would it make sense to start this?\" then \"What has to happen before it can begin?\" Draw an arrow for every dependency anyone names, including ones on other teams.",
+   say:"If something waits on another team, say so now and we'll draw it. A dependency we draw today is a conversation we have in January instead of April.",
+   ho:"The arrows. These are the reason the plan survives contact with the rest of the organization."},
+  {t:"1:20",d:"20m",ph:"analyze",name:"Owners and first check-ins",outside:true,
+   how:"For each item: \"Who's best placed to take this forward?\" Name on a card beside it. Then \"When should we check in?\" Rough is fine — \"early March\" works. One owner per item; they can pull others in later.",
+   say:"If an item has no owner, it isn't on the roadmap. I'll write \"no owner yet\" on it rather than leave it looking planned.",
+   ho:"Accountability attached to each line while everyone is still in the room to object."},
+  {t:"1:40",d:"15m",ph:"analyze",name:"Decider sign-off",outside:true,
+   how:"The Decider walks the whole plan aloud, confirms timing and ownership, and makes any final changes.",
+   say:"This is the moment it becomes the plan. Anything that feels wrong, say it now.",
+   ho:"A plan with authority behind it rather than a wall someone photographs and forgets."},
+  {t:"1:55",d:"5m",ph:"analyze",name:"\"What could stop this?\"",outside:true,
+   how:"One sentence from each owner. If the answer is another person, that person is part of the commitment — write their name down too.",
+   say:"One sentence each. Not a risk register, just the thing you're actually worried about.",
+   ho:"The first blockers named out loud, which is usually where the follow-up conversation starts."}],
+ credit:"Importance vs. Difficulty Matrix is a standard prioritization tool. The \"higher or lower\" placement method, the twenty-second rule, the bucket timeline and the Decider sign-off come from AJ&Smart's Action Board and Strategy Signal roadmap, including the rule that an item with no owner isn't worth doing."},
+
+{id:"r5",n:5,title:"Strategy Signal",time:"2 sessions · 4h 25m + 2h 10m",people:"5–8",phases:["frame","ideate","analyze"],
+ purpose:"Agree where you're going in two years and what you'll do about it first — before anyone frames a problem or maps a journey, because all four of those sessions assume a direction already exists.",
+ facts:[
+  ["Run it when","Nobody can finish the sentence \"in two years we want to be...\" the same way twice. Or a new leader has arrived, or a team has lost its spark, or four good roadmaps are competing and none of them is wrong."],
+  ["Who's in the room","Leadership, 5 to 8, Decider present and named at the start. Not a big room — this is the session where a big room is actively worse."],
+  ["Leaves the room with","A long-term goal in one sentence, success metrics the Decider picked, 3 to 5 strategy concepts, and a 3-to-12-month roadmap with an owner and a date per line."],
+  ["Why two sessions","AJ&Smart run it over two days. Two half-days a week apart works better here: the gap lets the Decider check the goal against reality before anyone roadmaps against it."],
+  ["What to print","Almost nothing. Precursors & Analogs and Visualize the Vote are the only two tools that carry over — which is the point. This session is the shape of the gap."]],
+ steps:[
+  {t:"A 0:00",d:"30m",ph:"open",name:"Frame the session and choose the Decider",outside:true,
+   how:"Say what the session is for, show the agenda, then name the Decider out loud and get their agreement in front of everyone. Step 0 in the book, and the step most people skip.",
+   say:"By the end of today we'll have one sentence about where we're going and the measures that tell us we got there. Pat is our Decider — when we can't agree, Pat decides, and we all go with it.",
+   ho:"A room that knows how disagreement will end, which is what lets them disagree freely."},
+  {t:"A 0:30",d:"40m",ph:"frame",name:"Long-Term Goal",outside:true,
+   how:"Five minutes setting the challenge, five explaining the task, five showing two examples, then fifteen minutes of silent writing. Everyone writes one sentence: where we are in two years. Then stick and read out.",
+   say:"Two years from now. Optimistic but not fantasy — the version you'd actually bet on. One sentence, written so a new hire would understand it.",
+   eg:"The published example: cut patient onboarding from 40 minutes to 15.",
+   ho:"Six to eight competing futures, on the wall, in everyone's own words — which is the only honest starting point for a direction."},
+  {t:"A 1:10",d:"15m",ph:"analyze",name:"Picking Our North Star",
+   how:"Straw poll first: five minutes, everyone marks the one goal they'd bet on, no discussion. Then each author gets a minute to present theirs. Then the Decider votes, alone, and says why in one sentence.",
+   say:"The straw poll isn't the decision. It tells Pat where the room is before Pat chooses.",
+   ho:"One long-term goal, chosen by a named person, which every later step is measured against."},
+  {t:"A 1:25",d:"30m",ph:"frame",name:"Success Metrics",outside:true,
+   how:"Introduce the idea, show examples, ten minutes of silent writing, then stick and quick read-out. How would we know we made it? Numbers where numbers exist, observable behavior where they don't.",
+   say:"If we hit the goal, what would be measurably different? If you can't measure it, what would you see people doing that you don't see today?",
+   ho:"A set of candidate measures, which is the thing that stops the goal being a poster."},
+  {t:"A 1:55",d:"20m",ph:"analyze",name:"Pick Success Metrics",
+   how:"Heat map vote, five minutes, silent. Then the Decider vote. Keep three at most — a strategy with nine metrics has none.",
+   say:"Three. If everything is a measure of success, nothing is.",
+   ho:"The scoreboard, agreed before anyone proposes a strategy — so strategies get argued against the measures rather than against each other."},
+  {t:"A 2:15",d:"15m",ph:"brk",name:"Break"},
+  {t:"A 2:30",d:"55m",ph:"ideate",name:"Lightning Demos",
+   how:"Five minutes setting it up, five showing examples, then twenty-five minutes of silent research — each person finds three things anyone anywhere has done well that relate to the goal. Then two minutes each to present, drawing the one mechanism worth stealing. Not full examples: the one move.",
+   say:"We're not copying anyone. We're looking for the mechanism. Draw the part that does the work.",
+   ho:"A wall of mechanisms from outside your own industry — the single best defence against a strategy that only recombines what the room already does."},
+  {t:"A 3:25",d:"60m",ph:"ideate",name:"Concept Creation",
+   how:"Each person builds one strategy concept, alone, on one sheet: the mechanism, who it serves, what changes, which metric it moves. Name it. Work together, alone — same room, no talking.",
+   say:"One concept each, your own. A name, a sketch, and the metric it moves. If it doesn't move one of our three, it isn't a strategy for this goal.",
+   ho:"Five to eight concrete strategies, each tied to an agreed metric, ready for a vote that can't drift into preference."},
+  {t:"B 0:00",d:"15m",ph:"open",name:"Recap",outside:true,
+   how:"Re-read the goal and the three metrics aloud. Re-hang the concepts. Say what today produces. Do not reopen the goal — if it genuinely needs reopening, stop and say so, because roadmapping against a goal nobody believes is the most expensive hour in the book.",
+   say:"Same goal, same three measures. Today we choose and we sequence.",
+   ho:"A room back at the same altitude as a week ago."},
+  {t:"B 0:15",d:"45m",ph:"analyze",name:"Concept Voting",
+   how:"Heat map on the concepts, silent. Then a short clarifying round — twenty seconds per concept, questions only, no advocacy. Then the Decider picks three to five.",
+   say:"Questions only in this round. If you want to argue for one, that's what the heat map was.",
+   ho:"Three to five strategies with a mandate, which is the input a roadmap needs and almost never gets."},
+  {t:"B 1:00",d:"60m",ph:"analyze",name:"Roadmap Creation",outside:true,
+   how:"Draw three buckets on the wall — next 3 months, 3 to 6, 6 to 12. Place the chosen strategies, then break each into the two or three moves that have to happen first. Every line gets a named owner and a date. No owner, no line.",
+   say:"If nobody's name is on it, it isn't on the roadmap. We'll take it off rather than pretend.",
+   ho:"A roadmap that survives contact with the calendar, and the inputs for run-of-show 4 when any single line needs its own sequencing."},
+  {t:"B 2:00",d:"10m",ph:"open",name:"Wrapping it all up",outside:true,
+   how:"Read the roadmap back. Confirm each owner out loud, by name. Say what happens in the next week and who sends it. Then say one sentence about what the group did — people leave a strategy session unsure whether anything happened, and they shouldn't.",
+   say:"Before we close: Pat, you have the first line by the 14th. Dana, the second by the 21st. I'll have this written up and sent tomorrow morning.",
+   ho:"Owners who have said yes in front of each other, which is the only form of commitment that holds."}],
+ credit:"Strategy Signal is AJ&Smart's workshop; the steps, durations, two-day shape and the published onboarding example come from their Strategy Signal book. Long-Term Goal, Success Metrics, Lightning Demos, Concept Creation, Concept Voting and Roadmap Creation are theirs. A design thinking toolkit has no equivalent for the long-term goal, the metrics or the roadmap — only Precursors & Analogs and Visualize the Vote map across. The recommendation to split it a week apart rather than two consecutive days is not from the book."},
+
+{id:"r6",n:6,title:"One Owner, One Afternoon",time:"1h 30m",people:"1–3",phases:["discover","test","ideate"],
+ purpose:"Run a real session for a small business owner who has never been in one — where you are facilitating a person, not a group, and every piece of machinery built for stakeholder alignment is dead weight.",
+ facts:[
+  ["Run it when","An owner knows their business cold and has never done anything like this. Usually one to three people: the owner, and whoever else actually does the work."],
+  ["What's different","They are the Decider, the expert and the person who has to build it. There is nobody to align. So the voting, the silent writing and the neutrality all lose their reason to exist — and what's left is the half of facilitation that's about seeing your own business from outside it."],
+  ["Who's in the room","One to three. Over four and it becomes a normal workshop and you should run one."],
+  ["Leaves the room with","One page in their own handwriting: three things to do, one of them named for this week with a day attached."],
+  ["Your prep, not theirs","No pre-work will get done — assume none. Yours is heavy: you arrive with five prepared examples from businesses like theirs. That preparation is the session's whole value."],
+  ["What to print","Journey Map, Pain Point Identification, Precursors & Analogs. Don't say any of those names out loud."]],
+ steps:[
+  {t:"0:00",d:"10m",ph:"open",name:"What does a good week look like",outside:true,
+   how:"No agenda slide, no ground rules, no icebreaker. Ask what a good week looks like and what this week looked like. Write what they say in their words, visibly. You're doing two things: getting the goal without the word goal, and showing them you write down what they say.",
+   say:"Before anything else — what does a good week look like for you? Not a good year. A good week.",
+   ho:"A target in their own vocabulary, which every later step gets measured against instead of against a framework."},
+  {t:"0:10",d:"15m",ph:"discover",name:"Walk me through a customer",
+   how:"A Journey Map, never called that. One customer, from first hearing about them to paying. Draw it on the wall as they talk, left to right, one box per step, in their words. Interrupt only to ask what happens between two boxes.",
+   say:"Start me at the moment someone first hears you exist. Then what? And then? What happens between those two?",
+   ho:"Their business on a wall, which most owners have never once seen. This is the step that earns the next hour."},
+  {t:"0:25",d:"10m",ph:"test",name:"Mark where you lose them",
+   how:"Hand them the red marker — them, not you. Mark every step where people drop off, go quiet, or where they end up doing unpaid work. Say nothing while they mark.",
+   say:"Red dot anywhere you lose people. And anywhere you end up doing work you don't get paid for.",
+   ho:"A diagnosis they made themselves, which is the only kind they'll act on."},
+  {t:"0:35",d:"10m",ph:"analyze",name:"Which one costs you the most",outside:true,
+   how:"No vote, no matrix, no dots. Ask which red dot costs the most and have them say why out loud. Write the answer as one sentence and read it back. If they name two, make them choose. That's the whole exercise.",
+   say:"Of all of those, which one costs you the most? Say it as a sentence and I'll write it down.",
+   ho:"One problem, chosen by the only person whose choice matters — and said aloud, which makes it harder to drift off later."},
+  {t:"0:45",d:"20m",ph:"ideate",name:"Here are five people who fixed that",
+   how:"Precursors & Analogs, prepared by you in advance, not researched in the room. Five real businesses that lost customers at the same step and what each one actually did. Show the mechanism, not the brand. After each, ask one question: would that work here? Their yes and no are both data.",
+   say:"Five people with your exact problem. I'm not saying copy them — tell me what you'd change about each one.",
+   ho:"Material they didn't have an hour ago. An owner's problem is almost never a lack of ideas about their business; it's never having seen how anyone else solved it."},
+  {t:"1:05",d:"15m",ph:"prototype",name:"What would you do by Friday",outside:true,
+   how:"Three things, written by them, on one page. Small enough to start this week and done by them without hiring anyone. If something takes a month, break it until the first piece fits in a week.",
+   say:"Three things, in your handwriting, that you could start this week on your own. If it needs someone you don't have yet, it goes on the back.",
+   ho:"A page that leaves with them — and a page they wrote, which is the difference between a plan and a consultant's deliverable."},
+  {t:"1:20",d:"10m",ph:"open",name:"Pick the one and name the day",outside:true,
+   how:"One of the three, a day of the week, and who does it. Say it back to them. Photograph the page and send it that evening with two lines. Then one line about what they just did, because nobody tells an owner they did something well.",
+   say:"Which one, and which day? Say it to me as a sentence. I'll send you the photo tonight so it exists somewhere other than here.",
+   ho:"One commitment, with a day on it. Three is a wish list; one with a day is a change."}],
+ credit:"Journey Map, Pain Point Identification and Precursors & Analogs are standard design thinking tools, used here without their names. The prepared-examples move is AJ&Smart's Lightning Demos, inverted: the facilitator does the research beforehand because the participant has no time and no access. The ninety-minute shape, the single-choice step in place of voting and the handwriting rule are not from any source in this book."},
+
+{id:"r7",n:7,title:"Lightning Decision Jam",time:"1h",people:"4–10",phases:["discover","analyze","ideate"],
+ purpose:"The retrospective the toolkit doesn't have. Take a stuck, tired or just-finished team from complaining to three owned actions in an hour, without a discussion ever being allowed to start.",
+ facts:[
+  ["Run it when","A team is stuck, morale has gone flat, a project just ended and the lessons are about to evaporate, or a meeting that recurs has stopped producing anything. Also the right first workshop you ever run: sixty minutes, no prep, nothing to lose."],
+  ["Who's in the room","4 to 10, the people actually doing the work. Works with or without their manager present — but read Rank in the room first if the manager is in it, because this is the format rank damages most."],
+  ["Leaves the room with","One to three solutions, each with a named owner and a two-week window, plus the problem list that didn't make the cut, kept visible."],
+  ["What to print","Almost nothing. How Might We maps onto step 4 and Importance vs. Difficulty onto step 7. There is no retrospective tool in the 42 — every tool points outward at a customer or a solution, none of them asks how the work itself is going."],
+  ["The rule that makes it work","No discussion. Not minimized — forbidden. Every step is silent writing or silent voting. The format's whole claim is that an hour of structured silence beats an hour of the three most confident people talking."]],
+ steps:[
+  {t:"0:00",d:"10m",ph:"open",name:"Start on a positive note",outside:true,
+   how:"Four minutes of silent writing: what's going well? One per note. Then one to two minutes each to read theirs out and stick them up. Don't skip this and don't shorten it — it's the step that makes the next one safe, and in a flat team it's often the first good news anyone has said out loud in a month.",
+   say:"Four minutes, silent. What's working. Not what should work — what actually is.",
+   ho:"A room that has just said something positive, which is the only condition under which the problem list stays honest rather than becoming a complaint session."},
+  {t:"0:10",d:"5m",ph:"discover",name:"Capture problems",outside:true,
+   how:"Four minutes of silent writing: anything not working, one per note, no filtering. Then everyone sticks them up at once. No reading aloud, no discussion, no grouping.",
+   say:"Everything that's broken, annoying or slow. Don't self-censor and don't write solutions. We're not discussing any of these.",
+   ho:"The whole problem space on the wall in five minutes, which is faster than any conversation would have got there and includes the things people wouldn't have said."},
+  {t:"0:15",d:"3m",ph:"analyze",name:"Prioritize problems",outside:true,
+   how:"Two dots each, placed silently, on the problems that matter most. Then you take the top-voted problem and only that one forward. Say out loud that the rest stay on the wall and go into the notes.",
+   say:"Two dots each. Silent. You're voting on problems, not solutions — and everyone in this room can judge how much a problem hurts, which is why we start here.",
+   ho:"One problem with a mandate, chosen in three minutes by a method that depth of knowledge doesn't skew."},
+  {t:"0:18",d:"3m",ph:"frame",name:"Reframe as a standardized challenge",
+   how:"Rewrite the winning problem as a How Might We question on a rectangular note. One question, wide enough to have several answers and narrow enough that a wrong answer is recognisable.",
+   say:"Same problem, asked as a question we could answer several ways.",
+   ho:"A question the next step can answer, instead of a complaint the next step would argue with."},
+  {t:"0:21",d:"6m",ph:"ideate",name:"Ideate a mass of solutions",outside:true,
+   how:"Six minutes of silent writing, as many solutions as possible, one per note. Quantity explicitly over quality. Then stick them all up without reading them out.",
+   say:"As many as you can. Bad ones count. Nobody is going to read these out, so don't write for an audience.",
+   ho:"Volume, which is what the voting step needs — and the reason nobody has to defend anything."},
+  {t:"0:27",d:"5m",ph:"analyze",name:"Prioritize solutions",outside:true,
+   how:"Six dots each, four minutes, silent. Multiple dots on one solution are allowed. Then pull out everything with two or more votes and discard the rest without ceremony.",
+   say:"Six dots, spend them how you like. Silent again.",
+   ho:"A shortlist of maybe six to eight, small enough for the matrix and chosen before anyone argued for their own."},
+  {t:"0:32",d:"10m",ph:"analyze",name:"Decide what to execute on",
+   how:"Draw the two axes. Place each shortlisted solution on impact first, one at a time, moving along the axis — then on effort. Place, don't debate: twenty seconds a card, and the person who disagrees moves it one step rather than making a case. Only the high-impact, low-effort quadrant goes forward.",
+   say:"Higher or lower than that one? That's the whole question. If you disagree, move it one step, don't explain.",
+   ho:"One to three solutions that are both worth doing and actually doable this fortnight — which is the test most workshop outputs never get put through."},
+  {t:"0:42",d:"5m",ph:"open",name:"Make solutions actionable",outside:true,
+   how:"Each surviving solution becomes a task on a rectangular note: what the first step is, who owns it, and a date inside two weeks. Say each one aloud with the owner's name. Photograph the wall. Book the check-in before anyone leaves the room.",
+   say:"Two weeks, not a quarter. And the first step, not the whole thing. Dana — the first step is yours, by the 12th?",
+   ho:"Three owned actions and a booked check-in, which is the difference between a retro and a vent."}],
+ credit:"Lightning Decision Jam is AJ&Smart's format; the eight steps, their order and their durations come from the LDJ Booklet 2020, including the positive opening and the no-discussion rule. How Might We and Importance vs. Difficulty are the two toolkit tools that happen to map onto steps 4 and 7 — the only two that do."},
+
+{id:"r8",n:8,title:"What Do We Need to Know",time:"1h 15m",people:"5–8",phases:["analyze","prototype"],
+ purpose:"The session for when ideation ended and the honest answer is that you don't know enough to choose yet — so that \"go and find out\" becomes a decided outcome with owners and a date, instead of a stall that nobody names.",
+ facts:[
+  ["Run it when","You've got concepts and can't choose between them, and the reason is missing information rather than missing courage. Runs straight after run-of-show 3, or a week later on its output."],
+  ["Why it exists","Nothing in the toolkit lets a session end in \"we need to go and learn something.\" Five phases in sequence imply that discover already happened and won't need to happen again. In practice ideation is what tells you what you should have asked in discover, and there has to be a legitimate way to say so."],
+  ["Who's in the room","5 to 8, the same room that generated the concepts, plus whoever would have to go get the information."],
+  ["Leaves the room with","A ranked assumption list, the three cheapest things that would resolve the top ones, an owner each, and a date to come back and choose."],
+  ["What to print","D.V.F. Framework for the sort, Importance vs. Difficulty adapted for the rank. The adaptation is real: you're changing one axis, and you should say so in the room."]],
+ steps:[
+  {t:"0:00",d:"10m",ph:"open",name:"State the claim out loud",outside:true,
+   how:"Put the two or three surviving concepts up, and for each one write the sentence it depends on being true. Not the concept — the claim underneath it. Read them aloud. This reframes the session from indecision to inquiry in about four minutes.",
+   say:"We're not re-arguing the concepts. We're writing down what each one needs to be true, and then deciding what we'd go and check.",
+   ho:"Two or three claims, which are testable in a way that concepts aren't."},
+  {t:"0:10",d:"15m",ph:"analyze",name:"What has to be true",outside:true,
+   how:"Fifteen minutes of silent writing: everything that has to be true for this to work. One assumption per note. Push for the boring operational ones — the ones that actually kill things are rarely about whether customers want it.",
+   say:"One per note, written as a statement we could be wrong about. \"Customers will tolerate a second step\" rather than \"customer tolerance.\"",
+   ho:"A wall of assumptions, which is usually twice as long as anyone expected and is itself the argument for having run this session."},
+  {t:"0:25",d:"10m",ph:"analyze",name:"Sort them three ways",
+   how:"Use D.V.F.'s three lenses as columns: do people want it, does it work for the business, can we build it. Put every assumption in one column. Thin columns are the finding — a wall with no viability assumptions means nobody in the room is thinking about money.",
+   say:"One column each. If a column is nearly empty, that's not a clean bill of health, that's a blind spot.",
+   ho:"Three groups, and a visible picture of which kind of risk this team systematically forgets."},
+  {t:"0:35",d:"15m",ph:"analyze",name:"Rank by what it would cost to be wrong",
+   how:"Importance vs. Difficulty with one axis swapped: how much it matters if we're wrong, against how sure we currently are. Place them silently, twenty seconds each, higher-or-lower only. The top-left — matters enormously, barely sure at all — is the entire agenda for the next two weeks.",
+   say:"I've changed one axis on this tool deliberately: it's not difficulty today, it's how confident we are. Matters a lot and we don't know is the corner we care about.",
+   ho:"Three to five assumptions worth spending real time on, separated from thirty that were never the risk."},
+  {t:"0:50",d:"15m",ph:"prototype",name:"The cheapest thing that would tell us",outside:true,
+   how:"For each of the top three: what is the smallest, fastest thing that would move us from guessing to knowing? Five interviews, a query against existing data, one conversation with Risk, a fake door, a day of someone's time. Write the method, not the project. If the answer is \"a research study,\" it's too big — ask what the first day of it would be.",
+   say:"Not what would prove it. What would change our mind by Friday.",
+   ho:"Three pieces of work small enough to actually happen, which is the only property that matters here."},
+  {t:"1:05",d:"10m",ph:"open",name:"Owners and the date you come back",outside:true,
+   how:"An owner per item, said aloud. Then — the step that makes this a session and not a stall — book the meeting where you come back and choose, with a date, before anyone leaves. Say what happens at that meeting: we choose, with or without complete answers.",
+   say:"The 28th, same room. We choose that day whether or not all three came back clean. Not knowing is a reason to go and look, not a reason to keep not choosing.",
+   ho:"A decision with a date on it, which is what stops \"we need more information\" becoming the permanent state it usually becomes."}],
+ credit:"Assumption mapping comes from the lean and discovery literature rather than any of the three systems in this book — David Bland's version is the one most people have seen. D.V.F. Framework and Importance vs. Difficulty are standard design thinking tools, the second one deliberately adapted by swapping the difficulty axis for a confidence axis. The session exists because I named the gap: after ideation, more information often has to be collected, and there was no legitimate way for a session to end that way."},
+
+{id:"r9",n:9,title:"Requirements and Who Decides",time:"3h",people:"6–10",phases:["discover","frame","analyze"],
+ purpose:"Turn an agreed concept into requirements somebody can build and test — and in the same session separate what your team gets to decide from what Security, Risk, Legal or Compliance decide, before the build finds out the hard way.",
+ facts:[
+  ["Run it when","A concept has been chosen and the next conversation is with engineering. Or earlier, when you already know the flow depends on a policy answer nobody has asked for yet."],
+  ["Who's in the room","6 to 10, and the mix is the point: design, engineering, a business analyst, QA, and the product owner. If you can get a Risk or Security partner in the room for the second half, the session pays for itself twice."],
+  ["Leaves the room with","A requirement per flow step, acceptance criteria for the ones you own, and a written decision request per item you don't — each with the team that owns it and a date you need it by."],
+  ["The move that makes it different","Every requirement gets marked ours or theirs. Most requirements workshops produce a list that silently mixes the two, and the project discovers the difference in build, when it costs ten times more and reads as a design failure."],
+  ["What to print","Journey Map or the Service Blueprint from run-of-show 1 as the spine. Problem Statement to hold the scope line. The rest is outside the toolkit — there is no requirements tool in the 42."]],
+ steps:[
+  {t:"0:00",d:"15m",ph:"open",name:"The scope line and what counts as a requirement",outside:true,
+   how:"Put the chosen concept up, then write the scope line — start point and end point of the flow you're specifying — where it stays visible. Then show one good requirement and one bad one side by side, because everyone in the room has a different definition and nobody will say so.",
+   say:"A requirement here is something a person could later check. \"The experience should feel reassuring\" isn't one. \"The customer can see which documents are still outstanding without leaving the page\" is.",
+   eg:"Show the two side by side on one sheet. Definitions alone never land; the pair does.",
+   ho:"A shared definition and a fixed scope, which together prevent the two arguments that eat the middle of this session."},
+  {t:"0:15",d:"35m",ph:"discover",name:"Walk the flow, step by step",
+   how:"Lay the chosen flow out left to right, one step per card — from the blueprint if you have one, drawn live if you don't. For each step name the actor and the system. Go slowly through the handoffs; they're where requirements hide and where the other teams' decisions live.",
+   say:"Slower at the joins. What happens between these two cards, and who does it?",
+   ho:"The spine. Every requirement after this hangs off a specific step rather than floating."},
+  {t:"0:50",d:"30m",ph:"frame",name:"What has to be true at each step",outside:true,
+   how:"Silent writing, one requirement per note, placed under the step it belongs to. Everyone writes against every step — the engineer's requirements and the designer's are different and both are needed. Then read them in step order, no discussion, only \"same\" or \"new.\"",
+   say:"Under the step it belongs to. Write what has to be true, not how we'd build it.",
+   ho:"Requirements attached to steps, which is what makes a gap visible as an empty column instead of an omission nobody notices."},
+  {t:"1:20",d:"15m",ph:"brk",name:"Break"},
+  {t:"1:35",d:"30m",ph:"analyze",name:"Ours or theirs",outside:true,
+   how:"Go through every note and mark it: ours to decide, or someone else's. Theirs gets the team's name written on it — Security, Risk, Legal, Compliance, a platform team. Do not let the room resolve a theirs item by guessing what that team would say. Write the guess down separately as an assumption and move on.",
+   say:"We're not deciding this one, we're deciding who decides it. If we think we know the answer, that's an assumption, and it goes on the other wall.",
+   ho:"Two piles. The first is your backlog, the second is the reason projects like this slip, now visible in week one instead of month four."},
+  {t:"2:05",d:"25m",ph:"frame",name:"Acceptance criteria for the ours pile",outside:true,
+   how:"In pairs, turn each owned requirement into something checkable. Given, when, then — or plainer: what would someone do, and what would they see. Pairs beat the whole room: two people write four times as many as eight people discussing.",
+   say:"Write it so a QA engineer who wasn't here could tell whether we did it.",
+   ho:"Criteria a story can carry and a tester can hold you to, which is the only form in which a requirement survives contact with a sprint."},
+  {t:"2:30",d:"20m",ph:"analyze",name:"Write the decision requests",outside:true,
+   how:"One card per theirs item: the question in a single sentence, who owns the answer, what we'll do by default if we don't hear back, and the date after which the default stands. The default is what makes these get answered — a question with no default is a question with no deadline.",
+   say:"One sentence, one named team, one date, and what we'll do if nobody replies. That last part is why people reply.",
+   ho:"A set of requests that can be sent the same afternoon, each one a decision somebody else has to make rather than a meeting somebody has to attend."},
+  {t:"2:50",d:"10m",ph:"open",name:"Owners and the send",outside:true,
+   how:"Name who sends each decision request and when — today, not this week. Name who writes the acceptance criteria up. Say the date the requirements are considered frozen for this slice, and what the route is for changing one after that.",
+   say:"These go out this afternoon. Anything that arrives after the 30th changes the next slice, not this one.",
+   ho:"Requests in flight the same day, and a change route — which is the thing whose absence turns a requirements workshop into a document people re-litigate for a month."}],
+ credit:"Journey Map and Problem Statement are standard design thinking tools; the toolkit has no requirements tool, so the structure here is built rather than cited. Silent writing against a visible spine, the same-or-new read-out and the pairs step are AJ&Smart mechanics applied to a job they don't cover. The ours-or-theirs split and the decision-request card with a default and a deadline are my own practice from mapping flows that depend on Security, Risk and Legal answers, written up here as a session."},
+
+{id:"r10",n:10,title:"What Will Kill This",time:"45m",people:"5–10",phases:["test","analyze"],
+ purpose:"Find the reasons this fails while there is still time to do something about them — by asking a room that has just committed to a plan to describe, in the past tense, the failure that already happened.",
+ facts:[
+  ["Run it when","A concept has been chosen and the build has not yet committed. That window is narrow and it is the only one that works: earlier and there is nothing concrete enough to kill, later and the session reads as sabotage of a decision already made."],
+  ["Who's in the room","5 to 10, and deliberately wider than the design team — engineering, operations, service, risk, anyone who will be holding this thing after you hand it over. The quietest skeptic in your organization is the highest-value invitation you will issue all quarter."],
+  ["Leaves the room with","Two or three failure modes that the room agrees are both likely and serious, each with the earliest signal you would see if it were starting, and a named person watching for that signal."],
+  ["The move that makes it different","The past tense. Not “what could go wrong” but “it is next October, this failed, why.” Asking people to explain a failure that has already happened gets different and better answers than asking them to predict one, because explanation is a thing people are good at and prediction is a thing they are cautious about."],
+  ["Why it is worth the 45 minutes","It is the cheapest session in this book and the one that buys the most credibility with risk-minded stakeholders. A design team that has already written down how its own idea fails is a different kind of partner to the business than one presenting upside."],
+  ["What to print","Problem Statement or the chosen Concept Poster as the thing being killed. Importance vs. Difficulty Matrix, used with both axes relabeled — likelihood and impact. Visualize the Vote if you need to narrow before the last step."]],
+ steps:[
+  {t:"0:00",d:"5m",ph:"open",name:"Set the date and say the word failed",outside:true,
+   how:"Put the chosen concept where everyone can see it. Then name a specific date far enough out that the thing would have shipped and been lived with — usually nine to twelve months. Say out loud that on that date it failed. Not underperformed, not had a mixed reception. Failed. Then say what is not in scope, so the room does not spend the session killing the company strategy instead of this project.",
+   say:"It is the fourteenth of October next year. We built this, we shipped it, and it failed. Everyone here knows why. For the next ten minutes you are not predicting anything — you are remembering.",
+   eg:"Hold the past tense for the whole session and correct it gently every time someone drifts back into “we might find that”. The tense is the whole mechanism; once the room is speaking in conditionals you are running an ordinary risk conversation.",
+   ho:"A fixed failure date and a scope line, which together stop the two arguments — when and how big — that otherwise eat the ten minutes of writing."},
+  {t:"0:05",d:"10m",ph:"analyze",name:"Write the reasons, silently, past tense",outside:true,
+   how:"Everyone writes alone, one reason per note, all in the past tense, starting with “it failed because”. No talking. Push for volume and tell the room that the obvious ones are welcome, because the obvious one that nobody writes down is how most of these actually go. Write your own at the same time; the facilitator usually holds two or three the room cannot see.",
+   say:"Past tense, one per note, as many as you can. If it feels too obvious to write, write it.",
+   eg:"Give the quietest person in the room a reason to go first later by telling everyone now that you will read out in order of who wrote least — it stops the prolific from setting the frame.",
+   ho:"A wall of specific, stated failure modes, written before anyone has heard what anyone else thinks, which is the only condition under which the awkward ones get written at all."},
+  {t:"0:15",d:"3m",ph:"analyze",name:"The one you are not writing down",outside:true,mine:true,
+   how:"Hand everyone one blank card. Three minutes, anonymous, one sentence: the reason this fails that you would not put your name on. Collect them face down, shuffle, and read them out yourself without comment. Then put them on the wall with the rest.",
+   say:"One card each, no names, hand it back face down. The reason you would not say in front of this group.",
+   eg:"Read every card even if one lands badly, and read it in the same flat voice as the others. Skipping one teaches the room that the exercise was a test.",
+   ho:"The political failure modes — the ones about a person, a team, or a decision that has already been made — which never appear on a signed note and are very often the real answer."},
+  {t:"0:18",d:"7m",ph:"analyze",name:"Read out and cluster",
+   how:"Round-robin, one note each in turn, read aloud as written. No discussion, no defending, no solving. Put duplicates on top of each other as they come. Keep going round until the wall is empty.",
+   say:"Reading only. Nobody answers these yet — not even the ones about your own work.",
+   ho:"A clustered set the room has heard in one another’s voices, which is what makes the next step a shared judgment rather than a fight."},
+  {t:"0:25",d:"7m",ph:"test",name:"Likelihood against impact",
+   how:"Draw the matrix from and relabel both axes — likelihood across, impact up. Say out loud that you are adapting the tool. Everyone places the clusters at once, standing, no talking; let people move each other’s. Top right is what you are here for.",
+   say:"Both axes are relabeled, so this is doing a different job. Place, don’t discuss. If you disagree with where something sits, move it.",
+   eg:"Resist the urge to tidy the top right into a ranked list. Two or three is the right number to leave with; a ranked eight is a risk register, and a risk register is where pre-mortems go to die.",
+   ho:"Two or three failure modes with the room’s agreement on them, narrow enough that the last step can be real work instead of a sweep."},
+  {t:"0:32",d:"8m",ph:"frame",name:"The earliest signal, and who watches for it",outside:true,
+   how:"For each of the top-right failures, write two things: the earliest observable signal you would see if this were starting to happen, and the name of the person who will notice it. Not a mitigation plan — a tripwire. Push hard on earliest; the first draft of a signal is almost always the moment it is already too late.",
+   say:"Not how we’d fix it. What we would see first, who sees it, and how soon they could possibly see it.",
+   eg:"When someone offers “adoption is low after launch”, ask what they would see three months before that, then three months before that again. The third answer is usually the useful one and it is usually something visible now.",
+   ho:"A small number of tripwires with names on them — the only form of pre-mortem output that survives the week, because everything else needs a meeting and a tripwire needs one person to notice."},
+  {t:"0:40",d:"5m",ph:"open",name:"The one you act on now",outside:true,
+   how:"Of everything on the wall, name the single failure mode you are going to do something about before the next sprint, and what that something is. Say what happens to the rest — where the list goes, who holds it, and when it gets looked at again. Then say plainly that nothing here is an argument against the project.",
+   say:"One of these we act on this week. The rest live on the list and we read it again at the next checkpoint. None of this means we shouldn’t build it.",
+   ho:"One action and a holding place, which is the difference between a session that changed the plan and a photographed wall that nobody opens."}],
+ variants:[
+  ["The sharper version: TRIZ","Liberating Structures has a destructive sibling worth knowing. Instead of asking why it failed, you ask the room to design the disaster on purpose — what could we do to guarantee the worst possible outcome for this? — and get a list of deliberate sabotage. Then the question that does the work: which of these are we already doing? Then: what will we stop? It takes about the same time and it has considerably more teeth, because nobody can defend a practice they have just listed as sabotage. Use it with a team that is being defensive, or when the pre-mortem’s answers all came back as things other people would do to you."],
+  ["Run it on your own workshop","Ten minutes with your co-facilitator the week before any session in this book. It is next Thursday afternoon, the workshop finished, it failed — why. Almost every answer will land on one of three things: a gate that was not actually met, an expectation nobody set, or a step whose output does not fit the next step’s first instruction. Which means your answers route straight into Readiness, Expectations and When a session doesn’t flow, and you can fix most of them for the price of an email."],
+  ["When not to run it","If the thing has already shipped and is already in trouble, this is the wrong session — the failure is not hypothetical and the room will not play along. Run number 7 instead, which is built for exactly that and will get you to the same place in an hour. And do not run a pre-mortem on a decision that is still open; it becomes a vote against the project held under another name, and people will correctly notice."]],
+ credit:"The pre-mortem is Gary Klein’s, from Performing a Project Premortem (Harvard Business Review, September 2007); the past-tense mechanism rests on prospective-hindsight research he cites, which found that imagining an outcome has already happened substantially increases the number of reasons people can give for it. Importance vs. Difficulty and Visualize the Vote are standard design thinking tools, used here with the axes relabeled — an adaptation to declare in the room. Silent writing, round-robin read-out and no-discussion placement are AJ&Smart mechanics. The destructive variant below is TRIZ, from Liberating Structures. The anonymous card is not from a source; it is here because the failure modes that involve a person in the room do not get written on a signed note."}
+];
+
+const TOOLS=[
+{ph:"frame",name:"Problem Statement",dur:"25m",
+ what:"One sentence about the people who have the problem and what it costs them. No solutions inside it.",
+ watch:"Solutions creep in as verbs. Read a draft back and ask whether it names a fix — if it does, the room has skipped ahead."},
+{ph:"frame",name:"How Might We…?",dur:"15–20m",
+ what:"The Problem Statement rewritten as the question you'll search for solutions inside.",
+ watch:"Teach with examples, not rules. Show one too-wide and one too-narrow question side by side; definitions alone never land."},
+{ph:"discover",name:"Expert Interview",dur:"30–45m",
+ what:"Experts describe the challenge while everyone else silently writes problems, one per note. Normally run as design work before the session, then brought in as a readout \u2014 doing it live is a teaching choice, not the default.",
+ watch:"People slip into asking questions and stop writing. Say up front there's a question minute at the end of each slot, then hold it. If you're running it live, confirm the experts weeks ahead and again the day before."},
+{ph:"discover",name:"Journey Map",dur:"40–60m",
+ what:"One actor's path left to right: stages, steps, what they're trying to do, how they feel.",
+ watch:"Rooms map the ideal journey without noticing. Your main job is the question \"is that what happens, or what we wish happened?\""},
+{ph:"discover",name:"Current State, Future State",dur:"45m",
+ what:"The same journey mapped twice, so the change is visible rather than asserted.",
+ watch:"Only re-map the stretch that matters. A full future-state map of everything takes the session over and gets less agreement."},
+{ph:"analyze",name:"Affinity Mapping",dur:"20–30m",
+ what:"Group notes by reading them aloud one at a time; the room says only \"same\" or \"new\". Name the columns at the end.",
+ watch:"The urge to name groups early is almost irresistible. Say why you're not doing it, or the room will do it for you."},
+{ph:"analyze",name:"Importance vs. Difficulty Matrix",dur:"25–30m",
+ what:"Place each item by asking only \"higher or lower?\" on each axis in turn.",
+ watch:"The best tool for teaching someone to cut a discussion off kindly. The twenty-second rule gives them a script, so they're enforcing a rule rather than being rude."},
+{ph:"analyze",name:"D.V.F. Framework",dur:"20m",
+ what:"Screen concepts on desirable, viable and feasible — the user's answer, the business's, and ours.",
+ watch:"Teams score all three high to protect a favorite. Ask for the one-line reason on every score and the inflation stops."},
+{ph:"ideate",name:"Precursors & Analogs",dur:"25m",
+ what:"Research examples from anywhere, then two minutes each to present the mechanism, not the product.",
+ watch:"First-timers present products they like. Keep asking \"what's the mechanism we'd steal?\" until they answer in verbs."},
+{ph:"ideate",name:"6-to-1 Ideation",dur:"20m",
+ what:"Silent generation narrowing down to each person's single strongest idea.",
+ watch:"Pure timekeeping, so good for a first-time facilitator. The self-editing step is the one people skip — make them cut their own."},
+{ph:"ideate",name:"If, Then Statements",dur:"10m",
+ what:"A concept's hypothesis in one line: if we do this, then that changes.",
+ watch:"The \"then\" has to be something you could observe. \"Then customers are happier\" isn't; \"then trial starts rise\" is."},
+{ph:"prototype",name:"Concept Poster",dur:"45–60m",
+ what:"One page per concept: what it is, the hypothesis, the mechanism, the first move.",
+ watch:"Show the template before ideation, not after. And say out loud that drawing ability is irrelevant — half the room is worried about it."},
+{ph:"prototype",name:"Service Blueprint",dur:"50–90m",
+ what:"Frontstage, backstage and systems lanes under each journey step.",
+ watch:"Go lane by lane across all steps, not step by step down all lanes. It's faster and the gaps appear as vertical holes."},
+{ph:"prototype",name:"End User Co-Creation",dur:"varies",
+ what:"Customers in the room building with you, rather than being researched and reported on.",
+ watch:"Not used in the ten, but it's the tool that turns run-of-show 1 into accreditation evidence. Brief customers beforehand so the first ten minutes aren't orientation."},
+{ph:"test",name:"Visualize the Vote",dur:"5–15m",
+ what:"Dots on what matters. Fixed number for narrowing, unlimited for a heat map. Silent, no discussion.",
+ watch:"The one to teach first. Say the number of dots three times. The only common mistake is letting people talk while voting."},
+{ph:"test",name:"Pain Point Identification",dur:"25m",
+ what:"Mark where the experience breaks, then mark which breaks cost the most.",
+ watch:"Mark the step, never the person. Say it before the dots come out, especially with frontline staff in the room."}
+];
+
+const MODULES=[
+{n:0,title:"Facilitation craft",time:"≈2h",
+ gap:"<b>The gap:</b> the toolkit tells you which tool and what it outputs. It never says how long, who decides, or what you actually say. Every tool in it assumes a facilitator — this module is that person.",
+ items:[
+  ["AJ&amp;Smart's Facilitator Guidebook","36 pages, from facilitator.com. Preparation, instructions, troublemakers, remote principles. No exercises, all craft.","40m"],
+  ["<a href=\"https://www.youtube.com/watch?v=STI82NHjB3c\">Explaining any exercise</a>","What · Why · How, and the 3× rule. The format every instruction in this book follows.","8m"],
+  ["<a href=\"https://www.youtube.com/watch?v=o6YNHnt4jLQ\">The three voting techniques</a>","Heat map, straw poll, Decider vote. Visualize the Vote is the canvas; this is the mechanic.","7m"],
+  ["<a href=\"https://www.youtube.com/watch?v=DZiYUSau5LM\">Difficult participants &amp; the parking lot</a>","The most common reason a first session runs over.","5m"],
+  ["<a href=\"https://www.youtube.com/watch?v=r7ggXMHVH34\">Onboarding participants</a>","What to send before and how to open. Half of a session is settled before anyone writes a note.","9m"],
+  ["<a href=\"https://www.youtube.com/watch?v=So8aseCO3hY\">Peak-end, rituals, closing well</a>","Why how you end decides what people remember.","10m"]],
+ brings:"Nothing else in this plan works without it. Write your Decider handover line and two discussion-stopper lines on a card before you run anything."},
+
+{n:1,title:"Lightning Decision Jam",time:"≈1.5h",
+ gap:"<b>The gap:</b> the toolkit has no retrospective. Every tool in it points forward at a problem or a solution; none asks how the work itself is going. It also has no commit step.",
+ items:[
+  ["<a href=\"https://www.youtube.com/watch?v=0iVQYHHCTf0\">A remote LDJ, start to finish</a>","Watch first. Real participants, whole arc, 19 minutes. The shape of every run-of-show in this book.","19m"],
+  ["<a href=\"https://www.youtube.com/watch?v=KeQhOaEVZdc&t=418s\">The Sailboat, run live</a>","Watch 6:58 to 45:20. Drawing it, forward and back, categorizing, voting, reframing. The best live demo on the channel.","40m"],
+  ["LDJ Booklet 2020","AJ&amp;Smart's own booklet. The eight steps with exact timings and dot counts.","25m"],
+  ["<a href=\"https://www.youtube.com/watch?v=IojADA6zRKo\">Impact / Effort, run on a board</a>","The same shape as Importance vs. Difficulty, used on solutions rather than ideas.","16m"]],
+ brings:"A 60-minute format your toolkit has no equivalent of, and two moves you can lift into any session tomorrow: prioritization applied to <i>problems</i> rather than solutions, and an ending that produces owners instead of outputs."},
+
+{n:2,title:"Strategy Signal",time:"≈2h",
+ gap:"<b>The gap:</b> two tools the book simply doesn't contain — a long-term goal and a roadmap. Frame assumes something is broken. Importance vs. Difficulty ranks but never sequences.",
+ items:[
+  ["<a href=\"https://www.youtube.com/watch?v=2vIMwLqDsow\">The whole workshop on Miro</a>","Goal 6:54 · metrics 11:49 · demos 16:39 · concepts 21:48 · decide 28:46 · roadmap 33:45.","41m"],
+  ["<a href=\"https://www.youtube.com/watch?v=vxnX6h1HCps\">Aligning a team on a goal</a>","The two-year goal, straw poll, Decider, then \"Can we…?\" questions. Fifteen minutes, high value.","15m"],
+  ["Strategy Signal PDF","AJ&amp;Smart. Full step-by-step with every \"Say:\" line scripted — lift those straight onto cards.","45m"]],
+ brings:"After this, frame can start from a two-year ambition instead of a problem. That’s a different door into the same tools, and it's the one leadership conversations actually open with. It's also now written up end to end as <a href=\"#r5\">run-of-show 5</a> — read the module, then run the session."},
+
+{n:3,title:"The compressed arc",time:"≈2.5h",
+ gap:"<b>The gap:</b> the toolkit's five phases imply a project. Sometimes the honest answer is that you have one afternoon, and you still need to get from problem to tested idea.",
+ items:[
+  ["<a href=\"https://www.youtube.com/watch?v=J64VamE8LdE\">A design thinking session, live, end to end</a>","Two hours of real groups: icebreaker 1:54 · empathy map 19:26 · HMW 35:38 · Crazy 8s 42:56 · choose 56:21 · prototype 1:08:55 · test 1:26:00. Watch at 1× — the pacing is the lesson.","1h56m"],
+  ["<a href=\"https://www.youtube.com/watch?v=tX-HCNfaTdQ\">Designing a workshop from a client brief</a>","Watch someone build an agenda live from nothing. The skill behind <a href=\"#compose\">Build your own</a>.","36m"]],
+ brings:"How to run all five phases in two hours without it feeling rushed. Also the clearest demonstration anywhere of how an activity's output becomes the next one's input."},
+
+{n:4,title:"Research, co-creation and mapping",time:"≈3h",
+ gap:"<b>The gap:</b> a discover phase will name a dozen tools; the craft underneath them isn't taught. Nor is co-creation (End User Co-Creation names it and stops), system mapping beyond Value Web, or rehearsal prototyping beyond Role Play.",
+ items:[
+  ["<a href=\"https://www.thisisservicedesigndoing.com/methods\">The 54 method pages</a>","Free, no sign-in. Each gives duration, participants, materials, energy level and numbered steps. Start with the research and co-creative workshop categories.","60m"],
+  ["This Is Service Design Doing, ch. 3","Journey map anatomy A–J, the journey map typology, service blueprints, the three system map types, the five prototype types. The depth under the journey map and the blueprint.","50m"],
+  ["Rehearsal methods","Investigative Rehearsal, Subtext, Desktop Walkthrough, Bodystorming. Role Play is the doorway to all of them.","30m"],
+  ["<a href=\"https://helpdesk.smaply.com/support/solutions/articles/22000258201-paper-templates\">Smaply paper templates</a>","Printable journey map, persona and stakeholder canvases — the ones the TiSDD site doesn't host.","15m"]],
+ brings:"Journey Map co-created <i>with</i> customers rather than drawn about them. Service Blueprint with lanes that actually hold. And Role Play as a family of methods rather than one page. This is also the SDN competency you're assessed on."},
+
+{n:5,title:"The program layer",time:"≈2h",
+ gap:"<b>The gap:</b> nothing in the toolkit is bigger than a session. There's no model for how a workshop sits inside a project, or how a design practice gets embedded in an organization.",
+ items:[
+  ["This Is Service Design Doing, ch. 10","All of it. Consent, status, neutrality, the Status/Control Matrix, safe space, co-facilitation, timing, \"doing not talking.\" The theory under module 0's tactics.","45m"],
+  ["Chapter 9 §9.2.4–9.2.5, §9.3, §9.4","Project → iterations → activities, multitracking, the plan/manage/review loop, and §9.4's process templates — the closest the authors come to a recipe.","40m"],
+  ["Case 9.5.3","A five-day service design sprint for a cross-channel strategy. The nearest published analogue to Strategy Signal.","15m"],
+  ["Chapter 12 §12.3–12.4","Design sprints, embedding a practice, scaling a core team, customer-centric KPIs.","20m"]],
+ brings:"A workshop as one iteration in a program rather than an event. This is the vocabulary for framework-level work — the language you need when the ask stops being a workshop and starts being a practice. It is the shift from running sessions to running one."},
+
+{n:6,title:"Other theories of participation",time:"≈1.5h",
+ gap:"<b>The gap:</b> knowing <i>why</i> silent-then-vote works. Until you have that, you can run formats but not invent them — which is the actual definition of a one-trick pony, however many tricks are on the shelf.",
+ items:[
+  ["<a href=\"https://www.workshopr.io/library/recipes/\">Workshopr's twelve recipes</a>","Read all twelve in half an hour. Notice how few activities they use and how differently they combine them.","30m"],
+  ["<a href=\"https://www.liberatingstructures.com/6-making-space-with-triz/\">TRIZ</a> and <a href=\"https://www.liberatingstructures.com/7-15-solutions/\">15% Solutions</a>","Liberating Structures, by Lipmanowicz and McCandless. Also the sharper variant on run-of-show 10. Both scripted inside Workshopr's \"Unstick a problem\". Neither has a design thinking equivalent, and the TRIZ move — ask a room which bad practices they already do — has no analogue in design thinking at all.","30m"],
+  ["<a href=\"https://toolbox.hyperisland.com/stinky-fish\">Stinky Fish</a>","From the Hyper Island toolbox, scripted in Workshopr's \"Frame the problem\". A different way into the same territory as discover.","15m"]],
+ brings:"Formats built on a different theory than design thinking's. Once you can see the theory, you can build a session for a situation nobody wrote a tool for — which is where this whole plan has been going."}
+];
+
+const RLEVELS=["Not started","Read it","Rehearsed","Ran it"];
+const ALEVELS=["Not started","Learned","Can teach"];
+
+document.getElementById("modulebody").innerHTML=MODULES.map(m=>`
+<article class="module">
+  <div class="mhead">
+    <div><div class="eyebrow">Module ${m.n}</div><h3>${esc(m.title)}</h3></div>
+    <div class="meta">${esc(m.time)}</div>
+  </div>
+  <p class="mgap">${m.gap}</p>
+  <div class="mlist">${m.items.map(([t,s,d])=>`<div class="mitem"><div>${t}<span class="sub">${s}</span></div><div class="t">${d}</div></div>`).join("")}</div>
+  <div class="brings"><b>Brings back to your toolkit</b>${m.brings}</div>
+</article>`).join("");
+
+function recipeHTML(r){
+  const facts=r.facts.map(([k,v])=>`<div class="fact"><div class="label">${esc(k)}</div><p>${esc(v)}</p></div>`).join("");
+  const steps=r.steps.map(s=>{
+    if(s.ph==="brk")return `<div class="step"><div class="clock">${s.t}<span>${s.d}</span></div><div><h4><span class="ph brk">break</span> ${esc(s.name)}</h4></div></div>`;
+    return `<div class="step"><div class="clock">${s.t}<span>${s.d}</span></div><div>
+      <h4>${esc(s.name)} <span class="ph ${s.ph}">${PH[s.ph]}</span>${s.outside?`<span class="outside">outside the toolkit</span>`:""}${s.mine?`<span class="mine">not from a source</span>`:""}</h4>
+      <p class="how">${esc(s.how)}</p>
+      ${s.say?`<div class="say"><b>Something like</b>“${esc(s.say)}”</div>`:""}
+      ${s.eg?`<p class="eg">Example: ${esc(s.eg)}</p>`:""}
+      ${s.ho?`<div class="handoff"><span class="arr">↳</span><span><b>Hands the next step:</b> ${esc(s.ho)}</span></div>`:""}
+    </div></div>`}).join("");
+  return `<section class="recipe" id="${r.id}">
+    <div class="rhead">
+      <div class="rtop">
+        <div><div class="eyebrow">Run-of-show ${r.n}</div><h2>${esc(r.title)}</h2></div>
+        <div class="meta">${esc(r.time)} · ${esc(r.people)} people<br>${r.phases.map(p=>`<span class="ph ${p}">${PH[p]}</span>`).join(" ")}</div>
+      </div>
+      <p class="purpose">${esc(r.purpose)}</p>
+      <div class="facts">${facts}</div>
+    </div>
+    <div class="steps">${steps}</div>
+    ${r.variants?`<div class="rvar">${r.variants.map(([k,v])=>`<div class="vb"><b>${esc(k)}</b><p>${esc(v)}</p></div>`).join("")}</div>`:""}
+    <div class="rfoot"><b>Where it comes from.</b> ${esc(r.credit)}</div>
+  </section>`;
+}
+document.getElementById("recipebody").innerHTML=RECIPES.map(recipeHTML).join("");
+
+(function(){
+  const order=["frame","discover","analyze","ideate","prototype","test"];
+  document.getElementById("toolbody").innerHTML=order.map(ph=>{
+    const items=TOOLS.filter(a=>a.ph===ph);
+    if(!items.length)return"";
+    const rows=items.map((a,i)=>`<tr>
+      <td><b>${esc(a.name)}</b></td>
+      <td class="num">${esc(a.dur)}</td>
+      <td>${esc(a.what)}</td>
+      <td><b style="font-weight:600">Watch for:</b> ${esc(a.watch)}</td>
+    </tr>`).join("");
+    return `<h3 style="margin:26px 0 10px"><span class="ph ${ph}">${PH[ph]}</span></h3>
+    <div class="tablebox"><table>
+      <thead><tr><th>Tool</th><th>Time</th><th>What it is</th><th>Teaching note</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+  }).join("");
+})();
+
+</script>
