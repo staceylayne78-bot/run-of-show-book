@@ -177,6 +177,20 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);font-si
 .panel a.cur i{color:var(--key)}
 @media (max-width:760px){.panel .pin{grid-template-columns:1fr;gap:18px}.sticky .here{display:none}}
 @media print{.sticky{display:none}}
+
+/* collapsible sections */
+.cxoff{display:none !important}
+h2.cxh{cursor:pointer;display:flex;align-items:center;gap:11px;user-select:none}
+h2.cxh:focus-visible{outline:2px solid var(--key);outline-offset:4px}
+h2.cxh .cxi{flex:none;width:19px;height:19px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;line-height:1;transition:transform .14s ease,color .14s ease,border-color .14s ease}
+h2.cxh:hover .cxi{color:var(--ink);border-color:var(--muted)}
+h2.cxh[aria-expanded="false"] .cxi{transform:rotate(-90deg)}
+.cxb{display:block;width:100%;text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--faint);border:none;border-top:1px solid var(--line);color:var(--muted);padding:11px 24px;cursor:pointer}
+.cxb:hover{color:var(--ink);background:var(--card)}
+.cxb::before{content:"\25B8";display:inline-block;margin-right:9px;transition:transform .14s ease}
+.cxb[aria-expanded="true"]::before{transform:rotate(90deg)}
+.sticky .ctl.alt{margin-left:0}
+@media print{.cxoff{display:block !important}.cxb{display:none}[hidden]{display:block !important}}
 </style>
 
 <div class="wrap" id="top">
@@ -1316,4 +1330,111 @@ document.getElementById("recipebody").innerHTML=RECIPES.map(recipeHTML).join("")
   spy();
 })();
 </script>
+<script>
+/* ---------- collapsible sections ----------
+   Long reference documents are read by jumping, not by scrolling. Folding the
+   run-of-shows turns the page into a catalog of ten sessions you open one at a
+   time. The cost would be find-in-page, so collapsed content is hidden with
+   hidden="until-found" where the browser supports it: Cmd+F still reaches the
+   text and the section opens itself on a match. Elsewhere it is a plain hide,
+   and Expand all is the way out. The choice is remembered per browser. */
+(function(){
+  var KEY="rosb-fold-v1";
+  var UNTIL=("onbeforematch" in document.body);
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){state={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+  var folds={},all=[];
+
+  function fold(id,kids,btn,labels,defOpen){
+    if(!kids.length)return;
+    var box=document.createElement("div");
+    box.className="cx";
+    kids[0].parentNode.insertBefore(box,kids[0]);
+    kids.forEach(function(k){box.appendChild(k)});
+    var f={id:id,open:true,box:box,btn:btn};
+    f.set=function(open,persist){
+      f.open=open;
+      if(open){box.removeAttribute("hidden");box.classList.remove("cxoff")}
+      else if(UNTIL){box.setAttribute("hidden","until-found")}
+      else{box.classList.add("cxoff")}
+      btn.setAttribute("aria-expanded",open?"true":"false");
+      if(labels)btn.textContent=open?labels[1]:labels[0];
+      if(persist){state[id]=open?1:0;save()}
+    };
+    box.addEventListener("beforematch",function(){f.set(true,false)});
+    folds[id]=f;all.push(f);
+    f.set((id in state)?!!state[id]:defOpen,false);
+  }
+
+  document.querySelectorAll("section[id]").forEach(function(sec){
+    var rec=sec.classList.contains("recipe");
+    if(rec){
+      var head=sec.querySelector(".rhead");
+      if(!head)return;
+      var kids=[],n=head.nextElementSibling;
+      while(n){kids.push(n);n=n.nextElementSibling}
+      var steps=sec.querySelectorAll(".step").length;
+      var b=document.createElement("button");
+      b.type="button";b.className="cxb";
+      head.parentNode.insertBefore(b,head.nextSibling);
+      fold(sec.id,kids,b,["Show the run-of-show \u00b7 "+steps+" steps","Hide the steps"],false);
+    }else{
+      var h=sec.querySelector("h2");
+      if(!h)return;
+      h.classList.add("cxh");
+      h.setAttribute("role","button");
+      h.setAttribute("tabindex","0");
+      var i=document.createElement("span");
+      i.className="cxi";i.setAttribute("aria-hidden","true");i.textContent="\u25BE";
+      h.insertBefore(i,h.firstChild);
+      var ks=[],m=h.nextElementSibling;
+      while(m){ks.push(m);m=m.nextElementSibling}
+      fold(sec.id,ks,h,null,true);
+      h.addEventListener("keydown",function(e){
+        if(e.key===" "||e.key==="Enter"){e.preventDefault();h.click()}
+      });
+    }
+  });
+
+  all.forEach(function(f){
+    f.btn.addEventListener("click",function(e){
+      if(e.target.closest("a"))return;
+      e.preventDefault();f.set(!f.open,true);
+    });
+  });
+
+  // A link into a folded section has to open it, or the jump lands on nothing.
+  function reveal(id){var f=folds[id];if(f&&!f.open)f.set(true,true)}
+  document.addEventListener("click",function(e){
+    var a=e.target.closest('a[href^="#"]');
+    if(a&&a.hash&&a.hash.length>1)reveal(decodeURIComponent(a.hash.slice(1)));
+  },true);
+  addEventListener("hashchange",function(){
+    if(location.hash.length>1)reveal(decodeURIComponent(location.hash.slice(1)));
+  });
+  if(location.hash.length>1)reveal(decodeURIComponent(location.hash.slice(1)));
+
+  // Expand all / Collapse all, next to Contents.
+  var bar=document.querySelector(".sticky .sbar");
+  if(bar){
+    var t=document.createElement("button");
+    t.type="button";t.className="ctl alt";
+    function label(){
+      var shut=all.filter(function(f){return !f.open}).length;
+      t.textContent=shut?"Expand all":"Collapse all";
+    }
+    t.addEventListener("click",function(){
+      var open=all.some(function(f){return !f.open});
+      all.forEach(function(f){f.set(open,true)});
+      label();
+    });
+    all.forEach(function(f){f.btn.addEventListener("click",function(){setTimeout(label,0)})});
+    bar.insertBefore(t,bar.querySelector(".ctl"));
+    label();
+  }
+})();
+</script>
+
 
